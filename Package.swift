@@ -12,7 +12,9 @@ let package = Package(
     dependencies: [],
     targets: [
         .pixelTarget,
-        .pixelTestTarget
+        .pixelTestTarget,
+
+        .pixelCoreTarget
     ]
 )
 
@@ -31,6 +33,7 @@ private extension String {
 
     // MARK: Submodules
     static let pixel: String = "Pixel"
+    static let pixelCore: String = "PixelCore"
 
     // MARK: Packages
 
@@ -56,6 +59,7 @@ private extension Target.Dependency {
 
     // MARK: Submodules
     static let pixelDependency: Target.Dependency = byName(name: .pixel)
+    static let pixelCoreDependency: Target.Dependency = byName(name: .pixelCore)
 
     // MARK: Packages
 }
