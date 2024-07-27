@@ -8,22 +8,15 @@
 
 import Foundation
 
-@available(iOS 16.0, *)
-public protocol PixelFontStyleProtocol {
+public enum PixelFontStyle<FontProtocol: PixelFontProtocol, Theme: PixelThemeProtocol>: PixelFontStyleProtocol {
 
-    var pixelFont: PixelFontProtocol { get }
-}
-
-@available(iOS 16.0, *)
-public enum PixelFontStyle<PixelFont: PixelFontProtocol, Theme: PixelThemeProtocol>: PixelFontStyleProtocol {
-
-    case single(pixelFont: PixelFont)
-    case themed(pixelFonts: [Theme: PixelFont], theme: Theme)
+    case solid(FontProtocol)
+    case themed(pixelFonts: [Theme: FontProtocol], theme: Theme)
     indirect case conditional(activeFontStyle: Self, inactiveFontStyle: Self, isActive: Bool)
 
-    public var pixelFont: PixelFontProtocol {
+    public var pixelFont: FontProtocol {
         switch self {
-        case .single(let pixelFont):
+        case .solid(let pixelFont):
             return pixelFont
         case .themed(let pixelFonts, let theme):
             return pixelFonts[theme] ?? .empty

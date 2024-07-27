@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: .module,
-    platforms: [.iOS],
+    platforms: [.iOS(.v16)],
     products: [
         .pixelProduct
     ],
@@ -19,6 +19,12 @@ let package = Package(
 )
 
 private extension Package.Dependency {
+<<<<<<< HEAD
+=======
+
+    static let swiftLintPackageDependency: Package.Dependency = package(url: "https://github.com/realm/SwiftLint",
+                                                                        from: "0.55.0")
+>>>>>>> ae2e9ca (Cleaning up PR)
 }
 
 private extension Product {

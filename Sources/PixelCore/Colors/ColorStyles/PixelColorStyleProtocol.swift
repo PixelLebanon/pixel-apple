@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 16.0, *)
 public protocol PixelColorStyleProtocol {
 
     var color: Color { get }

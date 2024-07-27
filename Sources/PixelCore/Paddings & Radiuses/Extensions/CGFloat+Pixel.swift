@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 16.0, *)
 public extension CGFloat {
 
     enum Pixel {

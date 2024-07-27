@@ -33,7 +33,7 @@ struct SFPro {
     }
 }
 
-fileprivate extension String {
+private extension String {
 
     static let sfProFolder: Self = "SF Pro/"
 }

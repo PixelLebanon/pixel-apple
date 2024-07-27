@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 16.0, *)
 public protocol PixelColorScheme {
 
     static var primary: Color { get }

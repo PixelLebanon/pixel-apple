@@ -8,8 +8,7 @@
 
 import Foundation
 
-@available(iOS 16.0, *)
-public protocol PixelTypography {
+public protocol PixelTypography<FontProtocol> {
 
     associatedtype FontProtocol: PixelFontProtocol
 

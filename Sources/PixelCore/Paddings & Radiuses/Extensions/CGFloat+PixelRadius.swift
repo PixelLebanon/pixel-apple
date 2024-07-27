@@ -8,12 +8,11 @@
 
 import Foundation
 
-@available(iOS 16.0, *)
 public extension CGFloat.Pixel {
 
-    static let square: CGFloat = PixelRadius.square
-    static let small: CGFloat = PixelRadius.small
-    static let medium: CGFloat = PixelRadius.medium
-    static let big: CGFloat = PixelRadius.big
-    static let dino: CGFloat = PixelRadius.dino
+    static let square: CGFloat = 0
+    static let small: CGFloat = 2
+    static let medium: CGFloat = 6
+    static let big: CGFloat = 12
+    static let dino: CGFloat = 16
 }

@@ -8,8 +8,9 @@
 
 import SwiftUI
 
-@available(iOS 16.0, *)
 public enum PixelTheme: PixelThemeProtocol {
 
-    case auto, light, dark
+    case light
+    case dark
+    indirect case auto(light: Self, dark: Self)
 }

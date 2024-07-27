@@ -8,15 +8,15 @@
 
 import SwiftUI
 
-@available(iOS 16.0, *)
 public protocol PixelFontProtocol {
 
     static var empty: Self { get }
 
-    var font: Font { get }
     var isCaps: Bool { get }
     var letterSpacing: CGFloat { get }
     var name: String { get }
     var size: CGFloat { get }
     var style: Font.TextStyle { get }
+
+    var font: Font { get }
 }

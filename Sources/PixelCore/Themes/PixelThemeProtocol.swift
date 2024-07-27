@@ -8,10 +8,10 @@
 
 import Foundation
 
-@available(iOS 16.0, *)
 public protocol PixelThemeProtocol: Hashable {
 
-    static var auto: Self { get }
     static var light: Self { get }
     static var dark: Self { get }
+
+    static func auto(light: Self, dark: Self) -> Self
 }

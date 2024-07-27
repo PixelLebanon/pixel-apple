@@ -8,16 +8,15 @@
 
 import SwiftUI
 
-@available(iOS 16.0, *)
 public enum PixelColorStyle<Theme: PixelThemeProtocol>: PixelColorStyleProtocol {
 
-    case single(color: Color)
+    case solid(Color)
     case themed(colors: [Theme: Color], theme: Theme)
     indirect case conditional(activeColorStyle: Self, inactiveColorStyle: Self, isActive: Bool)
 
     public var color: Color {
         switch self {
-        case .single(let color):
+        case .solid(let color):
             return color
         case .themed(let colors, let theme):
             return colors[theme] ?? .clear
