@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol PixelTypography<FontProtocol> {
+public protocol PixelTypography {
 
     associatedtype FontProtocol: PixelFontProtocol
 

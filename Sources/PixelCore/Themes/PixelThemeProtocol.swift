@@ -12,6 +12,5 @@ public protocol PixelThemeProtocol: Hashable {
 
     static var light: Self { get }
     static var dark: Self { get }
-
-    static func auto(light: Self, dark: Self) -> Self
+    static var auto: Self { get }
 }

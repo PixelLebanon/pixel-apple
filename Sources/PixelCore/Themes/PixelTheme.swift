@@ -12,5 +12,5 @@ public enum PixelTheme: PixelThemeProtocol {
 
     case light
     case dark
-    indirect case auto(light: Self, dark: Self)
+    case auto
 }

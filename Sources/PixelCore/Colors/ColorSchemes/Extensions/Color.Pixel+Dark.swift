@@ -38,31 +38,4 @@ public extension Color.Pixel {
         public static let success: Color = .init(.Dark.success)
         public static let onSuccess: Color = .init(.Dark.onSuccess)
     }
-
-    // MARK: Shortcuts
-    static let darkPrimary: Color = Dark.primary
-    static let darkOnPrimary: Color = Dark.onPrimary
-
-    static let darkSecondary: Color = Dark.secondary
-    static let darkOnSecondary: Color = Dark.onSecondary
-
-    static let darkAccent: Color = Dark.accent
-    static let darkOnAccent: Color = Dark.onAccent
-
-    static let darkNeutral: Color = Dark.neutral
-    static let darkOnNeutral: Color = Dark.onNeutral
-
-    static let darkBackground100: Color = Dark.background100
-    static let darkBackground200: Color = Dark.background200
-    static let darkBackground300: Color = Dark.background300
-    static let darkOnBackground: Color = Dark.onBackground
-
-    static let darkInfo: Color = Dark.info
-    static let darkOnInfo: Color = Dark.onInfo
-    static let darkError: Color = Dark.error
-    static let darkOnError: Color = Dark.onError
-    static let darkWarning: Color = Dark.warning
-    static let darkOnWarning: Color = Dark.onWarning
-    static let darkSuccess: Color = Dark.success
-    static let darkOnSuccess: Color = Dark.onSuccess
 }

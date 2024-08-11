@@ -8,13 +8,13 @@
 
 import Foundation
 
-public enum PixelFontStyle<FontProtocol: PixelFontProtocol, Theme: PixelThemeProtocol>: PixelFontStyleProtocol {
+public enum PixelFontStyle<Theme: PixelThemeProtocol, Typography: PixelTypography>: PixelFontStyleProtocol {
 
-    case solid(FontProtocol)
-    case themed(pixelFonts: [Theme: FontProtocol], theme: Theme)
+    case solid(Typography.FontProtocol)
+    case themed(pixelFonts: [Theme: Typography.FontProtocol], theme: Theme)
     indirect case conditional(activeFontStyle: Self, inactiveFontStyle: Self, isActive: Bool)
 
-    public var pixelFont: FontProtocol {
+    public var pixelFont: Typography.FontProtocol {
         switch self {
         case .solid(let pixelFont):
             return pixelFont
