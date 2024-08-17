@@ -9,17 +9,17 @@
 import PixelCore
 import SwiftUI
 
-public struct PixelTextConfiguration<Theme: PixelThemeProtocol, Typography: PixelTypography> {
+public struct PixelTextConfiguration<FontProtocol: PixelFontProtocol, Theme: PixelThemeProtocol> {
 
     let alignment: TextAlignment
-    let colorStyle: PixelColorStyle<Theme>
-    let fontStyle: PixelFontStyle<Theme, Typography>
+    var colorStyle: PixelColorStyle<Theme>
+    let fontStyle: PixelFontStyle<FontProtocol, Theme>
     let lineLimit: Int?
 
     public init(
         alignment: TextAlignment,
         colorStyle: PixelColorStyle<Theme>,
-        fontStyle: PixelFontStyle<Theme, Typography>,
+        fontStyle: PixelFontStyle<FontProtocol, Theme>,
         lineLimit: Int? = nil
     ) {
         self.alignment = alignment

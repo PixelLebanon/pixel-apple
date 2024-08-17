@@ -9,26 +9,48 @@
 import PixelCore
 import SwiftUI
 
-public typealias PixelText = PixelTextView<PixelTheme, PixelFont>
+public typealias PixelText = PixelTextView<PixelFont, PixelTheme>
 
-public struct PixelTextView<Theme: PixelThemeProtocol, Typography: PixelTypography>: View {
+public struct PixelTextView<FontProtocol: PixelFontProtocol, Theme: PixelThemeProtocol>: View {
 
-    private let configuration: PixelTextConfiguration<Theme, Typography>
+    @EnvironmentObject private var themeManager: PixelThemeManager<Theme>
+
+    @Environment(\.isFocused) private var isFocused: Bool
+
+    private let configuration: PixelTextConfiguration<FontProtocol, Theme>
     private let text: String
 
-    public init(configuration: PixelTextConfiguration<Theme, Typography>, text: String) {
+    public init(
+        alignment: TextAlignment,
+        colorStyle: PixelColorStyle<Theme>,
+        fontStyle: PixelFontStyle<FontProtocol, Theme>,
+        lineLimit: Int? = nil,
+        text: String
+    ) {
+        self.configuration = .init(
+            alignment: alignment,
+            colorStyle: colorStyle.adjustedColorStyle,
+            fontStyle: fontStyle,
+            lineLimit: lineLimit
+        )
+        self.text = text
+    }
+
+    public init(configuration: PixelTextConfiguration<FontProtocol, Theme>, text: String) {
         self.configuration = configuration
         self.text = text
     }
 
     public var body: some View {
-        Text(text)
-            .font(font)
-            .foregroundStyle(foregroundStyle)
-            .lineLimit(lineLimit)
-            .multilineTextAlignment(multilineTextAlignment)
-            .textCase(textCase)
-            .tracking(tracking)
+        VStack {
+            Text(text)
+                .font(font)
+                .foregroundStyle(foregroundStyle)
+                .lineLimit(lineLimit)
+                .multilineTextAlignment(multilineTextAlignment)
+                .textCase(textCase)
+                .tracking(tracking)
+        }
     }
 
     private var font: Font {
@@ -36,7 +58,7 @@ public struct PixelTextView<Theme: PixelThemeProtocol, Typography: PixelTypograp
     }
 
     private var foregroundStyle: Color {
-        configuration.colorStyle.color
+        configuration.colorStyle.color(isFocused: isFocused, theme: themeManager.theme)
     }
 
     private var lineLimit: Int? {
@@ -56,7 +78,38 @@ public struct PixelTextView<Theme: PixelThemeProtocol, Typography: PixelTypograp
     }
 }
 
-#Preview {
+private extension PixelColorStyle {
+
+    var adjustedColorStyle: PixelColorStyle<Theme> {
+        switch self {
+        case .solid: self
+        case .themed(let colors):
+            .themed(
+                colors: Theme.allCases.reduce(into: [:]) { partialResult, element in
+                    partialResult[element] = colors[element] ?? element.colorScheme.onBackground
+                }
+            )
+        case .conditional(let activeColorStyle, let inactiveColorStyle, let condition):
+            .conditional(
+                activeColorStyle: activeColorStyle.adjustedColorStyle,
+                inactiveColorStyle: inactiveColorStyle.adjustedColorStyle,
+                condition: condition
+            )
+        }
+    }
+}
+
+#Preview("Automatic") {
+    PixelText(
+        alignment: .center,
+        colorStyle: .themed(colors: [:]),
+        fontStyle: .solid(.superDino1),
+        text: "Hello World"
+    )
+    .environmentObject(PixelThemeManager<PixelTheme>())
+}
+
+#Preview("Manual") {
     PixelText(
         configuration: .init(
             alignment: .center,
@@ -65,4 +118,5 @@ public struct PixelTextView<Theme: PixelThemeProtocol, Typography: PixelTypograp
         ),
         text: "Hello World"
     )
+    .environmentObject(PixelThemeManager<PixelTheme>())
 }

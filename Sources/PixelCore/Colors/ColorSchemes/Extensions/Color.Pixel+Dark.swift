@@ -39,3 +39,8 @@ public extension Color.Pixel {
         public static let onSuccess: Color = .init(.Dark.onSuccess)
     }
 }
+
+public protocol HamadeColorScheme: PixelColorScheme {
+
+    static var hamade: Color { get }
+}

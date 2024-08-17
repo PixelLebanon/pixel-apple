@@ -10,7 +10,25 @@ import SwiftUI
 
 public enum PixelTheme: PixelThemeProtocol {
 
-    case light
-    case dark
-    case auto
+    case light, dark
+
+    public static let defaultValue: Self = .init(UITraitCollection.current.userInterfaceStyle)
+
+    public var colorScheme: any PixelColorScheme.Type {
+        switch self {
+        case .light: Color.Pixel.Light.self
+        case .dark: Color.Pixel.Dark.self
+        }
+    }
+}
+
+private extension PixelTheme {
+
+    init(_ userInterfaceStyle: UIUserInterfaceStyle) {
+        switch userInterfaceStyle {
+        case .light: self = .light
+        case .dark: self = .dark
+        default: self = .light
+        }
+    }
 }

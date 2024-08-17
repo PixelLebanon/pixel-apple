@@ -8,9 +8,9 @@
 
 import Foundation
 
-public protocol PixelThemeProtocol: Hashable {
+public protocol PixelThemeProtocol: CaseIterable, Hashable {
 
-    static var light: Self { get }
-    static var dark: Self { get }
-    static var auto: Self { get }
+    static var defaultValue: Self { get }
+
+    var colorScheme: PixelColorScheme.Type { get }
 }
