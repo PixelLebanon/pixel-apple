@@ -19,7 +19,7 @@ let package = Package(
 
 
         // MARK: Plugins
-        .swiftLintPackageDependency
+//        .swiftLintPackageDependency
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -31,8 +31,8 @@ let package = Package(
 
 fileprivate extension Package.Dependency {
 
-    static let swiftLintPackageDependency: Package.Dependency = package(url: "https://github.com/realm/SwiftLint.git",
-                                                                        from: "0.55.0")
+//    static let swiftLintPackageDependency: Package.Dependency = package(url: "https://github.com/realm/SwiftLint.git",
+//                                                                        from: "0.55.0")
 }
 
 fileprivate extension Product {
@@ -56,8 +56,8 @@ fileprivate extension String {
     
 
     // MARK: Plugins
-    static let swiftLint: String = "SwiftLint"
-    static let swiftLintPlugin: String = "SwiftLintBuildToolPlugin"
+//    static let swiftLint: String = "SwiftLint"
+//    static let swiftLintPlugin: String = "SwiftLintBuildToolPlugin"
 
     var testTarget: String { "\(self)Tests" }
 }
@@ -69,11 +69,15 @@ fileprivate extension SupportedPlatform {
 
 fileprivate extension Target {
 
-    static let pixelTarget: Target = target(name: .pixel,
-                                            plugins: [.swiftLintPlugin])
-    static let pixelTestTarget: Target = testTarget(name: .pixel.testTarget,
-                                                    dependencies: [.pixelDependency],
-                                                    plugins: [.swiftLintPlugin])
+    static let pixelTarget: Target = target(
+        name: .pixel
+//        plugins: [.swiftLintPlugin]
+    )
+    static let pixelTestTarget: Target = testTarget(
+        name: .pixel.testTarget,
+        dependencies: [.pixelDependency]
+//        plugins: [.swiftLintPlugin]
+    )
 }
 
 fileprivate extension Target.Dependency {
@@ -90,6 +94,6 @@ fileprivate extension Target.Dependency {
 
 fileprivate extension Target.PluginUsage {
 
-    static let swiftLintPlugin: Target.PluginUsage = plugin(name: .swiftLintPlugin,
-                                                            package: .swiftLint)
+//    static let swiftLintPlugin: Target.PluginUsage = plugin(name: .swiftLintPlugin,
+//                                                            package: .swiftLint)
 }
