@@ -8,11 +8,11 @@
 
 import Foundation
 
-/// A protocol to define an effective color scheme following the branding guidelines of Pixel.
+/// A type that defines a color scheme used in the Pixel design system.
 ///
-/// `PixelColorScheme` standardizes the roles of colors used in pixel components. This allows Pixel to easily adapt to
-/// custom themes defined by clients when dealing with contrast-sensitive content.
-/// 
+/// `PixelColorScheme` standardizes the roles of colors, allowing Pixel to easily adapt to custom themes defined by
+/// clients when dealing with contrast-sensitive content.
+///
 /// Conforming to this protocol would help improve color accessibility and consistency throughout your app.
 public protocol PixelColorScheme {
     

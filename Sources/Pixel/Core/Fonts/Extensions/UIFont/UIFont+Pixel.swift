@@ -10,6 +10,8 @@ import UIKit
 
 public extension UIFont {
 
+    /// A nested enum namespace to prevent name conflicts with native or third party frameworks and encapsulate Pixel
+    /// `UIFont` definitions.
     enum Pixel {
     }
 }

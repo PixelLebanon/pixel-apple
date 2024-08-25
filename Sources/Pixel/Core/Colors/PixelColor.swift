@@ -10,8 +10,8 @@ import SwiftUI
 
 /// A representation of a color that adapts to a SwiftUI and UIKit context.
 ///
-/// Pixel components depend on `PixelColor` to enable UI framework environment usecases when resolving a color to a
-/// concrete value.
+/// The Pixel design system depend on `PixelColor` to enable UI framework environment usecases when resolving a colo
+/// to a concrete value.
 public struct PixelColor {
 
     /// A SwiftUI color concrete value.

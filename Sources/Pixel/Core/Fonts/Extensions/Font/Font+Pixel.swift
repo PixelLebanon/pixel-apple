@@ -10,6 +10,8 @@ import SwiftUI
 
 public extension Font {
 
+    /// A nested enum namespace to prevent name conflicts with native or third party frameworks and encapsulate Pixel
+    /// `Font` definitions.
     enum Pixel {
     }
 }
