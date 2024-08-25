@@ -10,7 +10,7 @@ import SwiftUI
 
 public extension Color.Pixel {
 
-    /// A shortcut to the `Pixel.Dark`  color scheme implementation to access the set of colors in a SwiftUI context.
+    /// A shortcut to the `Pixel.Dark` color scheme implementation to access the set of colors in a SwiftUI context.
     ///
     /// Each color is of type `Color` to allow instant resolution to a SwiftUI color concrete value.
     enum Dark {
