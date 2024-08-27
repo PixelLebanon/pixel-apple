@@ -8,7 +8,13 @@
 
 import Foundation
 
-struct PixelKeys {
+extension Pixel {
+    
+    /// A local enum namespace to prevent name conflicts with native or third party frameworks and encapsulate Pixel key
+    /// definitions in `UserDefaults`.
+    enum Key {
 
-    static let theme: String = "pixelTheme"
+        /// The key used to store and retrieve the user's selected theme of type `PixelTheme` from `UserDefaults`.
+        static let theme: String = "PixelTheme"
+    }
 }

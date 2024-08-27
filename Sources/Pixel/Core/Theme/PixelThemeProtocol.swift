@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// A type to define the requirements for a theme in the Pixel design system.
+/// A type to define the requirements of a theme in the Pixel design system.
 ///
 /// `PixelThemeProtocol` is designed to help provide a standardized way to represent different themes in pixel
 /// components and apps. A theme includes a set of color roles from `PixelColorScheme` and font roles from
@@ -16,32 +16,26 @@ import Foundation
 ///
 /// Although not enforced, it is recommended to define custom theme implementations as enums as demonstrated:
 ///
-///     enum PixelTheme: PixelThemeProtocol {
+///     enum MyTheme: PixelThemeProtocol {
 ///
 ///         case light, dark
 ///
 ///         static let defaultValue: Self = .light
 ///
-///         var colorScheme: any PixelColorScheme.Type {
+///         var colorScheme: any MyColorScheme.Type {
 ///             switch self {
-///             case .light: PixelLightColorScheme.self
-///             case .dark: PixelDarkColorScheme.self
+///             case .light: MyLightColorScheme.self
+///             case .dark: MyDarkColorScheme.self
 ///             }
 ///         }
 ///
-///         var typography: any PixelTypography.Type {
+///         var typography: any MyTypography.Type {
 ///             switch self {
-///             case .light: PixelFontTypography.self
-///             case .dark: PixelFontTypography.self
+///             case .light: MyFontTypography.self
+///             case .dark: MyFontTypography.self
 ///             }
 ///         }
 ///     }
-///
-/// ### Requirements
-///
-/// - `defaultValue`: Default theme of the protocol implementation.
-/// - `colorScheme`: Pixel color scheme implementations matched to each defined theme type.
-/// - `typography`: Pixel typography implementations matched to each defined theme type.
 public protocol PixelThemeProtocol: CaseIterable, Hashable {
 
     /// Default theme value.
