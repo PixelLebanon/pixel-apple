@@ -12,12 +12,21 @@ public enum PixelTheme: PixelThemeProtocol {
 
     case light, dark
 
-    public static let defaultValue: Self = .init(UITraitCollection.current.userInterfaceStyle)
+    public static var defaultValue: Self {
+        UserDefaults.standard.pixelTheme ?? .init(UITraitCollection.current.userInterfaceStyle)
+    }
 
     public var colorScheme: any PixelColorScheme.Type {
         switch self {
         case .light: Pixel.Light.self
         case .dark: Pixel.Dark.self
+        }
+    }
+
+    public var typography: any PixelTypography.Type {
+        switch self {
+        case .light: PixelFont.self
+        case .dark: PixelFont.self
         }
     }
 }
