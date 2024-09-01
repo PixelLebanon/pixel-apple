@@ -10,6 +10,8 @@ import UIKit
 
 public extension PixelColorStyle {
 
+    /// A computed property to retrieve the UIKit color concrete value of a `solid` color style. Any other color style
+    /// will default to `UIColor.clear`.
     var uiColor: UIColor {
         switch self {
         case .solid(let pixelColor): pixelColor.uiColor
@@ -17,6 +19,8 @@ public extension PixelColorStyle {
         }
     }
 
+    /// A method to retrieve the UIKit color concrete value of a `solid` or `themed` color style. Any other color style
+    /// will default to `UIColor.clear`.
     func uiColor(theme: Theme) -> UIColor {
         switch self {
         case .solid(let pixelColor): pixelColor.uiColor
@@ -25,6 +29,7 @@ public extension PixelColorStyle {
         }
     }
 
+    /// A method to retrieve the UIKit color concrete value of any color style.
     func uiColor(isFocused: Bool, theme: Theme) -> UIColor {
         switch self {
         case .solid(let pixelColor):
