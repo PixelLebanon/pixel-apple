@@ -21,6 +21,7 @@ public enum PixelTheme: PixelThemeProtocol, Codable {
 
     /// The default theme value, determined by the user's pereferences. If not previously set, defaults to the system's
     /// current interface style.
+    @PixelUserDefaultsActor
     public static var defaultValue: Self {
         UserDefaults.standard.pixelTheme ?? .init(UITraitCollection.current.userInterfaceStyle)
     }

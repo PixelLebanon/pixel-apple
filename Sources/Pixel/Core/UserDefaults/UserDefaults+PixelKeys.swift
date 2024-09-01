@@ -8,6 +8,7 @@
 
 import Foundation
 
+@PixelUserDefaultsActor
 public extension UserDefaults {
 
     /// A private default JSON decoder to decode data stored in `UserDefaults`.
