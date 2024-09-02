@@ -5,16 +5,14 @@ import PackageDescription
 
 let package = Package(
     name: .module,
-    platforms: [.iOS(.v16)],
+    platforms: [.iOS],
     products: [
         .pixelProduct
     ],
     dependencies: [],
     targets: [
         .pixelTarget,
-        .pixelTestTarget,
-
-        .pixelCoreTarget
+        .pixelTestTarget
     ]
 )
 
@@ -33,7 +31,6 @@ private extension String {
 
     // MARK: Submodules
     static let pixel: String = "Pixel"
-    static let pixelCore: String = "PixelCore"
 
     // MARK: Packages
 
@@ -59,7 +56,6 @@ private extension Target.Dependency {
 
     // MARK: Submodules
     static let pixelDependency: Target.Dependency = byName(name: .pixel)
-    static let pixelCoreDependency: Target.Dependency = byName(name: .pixelCore)
 
     // MARK: Packages
 }
