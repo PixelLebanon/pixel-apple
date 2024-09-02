@@ -10,6 +10,10 @@ import Foundation
 
 public extension PixelThemeManager where Theme == PixelTheme {
 
+    /// A method unique to the `PixelTheme` implementation to update the current active theme value and save the new
+    /// value in `UserDefaults`.
+    ///
+    /// - Parameter theme: The new `PixelTheme` value to be set and persisted.
     func update(theme: Theme) {
         self.theme = theme
 
