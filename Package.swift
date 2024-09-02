@@ -43,7 +43,7 @@ private extension String {
 
 private extension SupportedPlatform {
 
-    static let iOS: SupportedPlatform = .iOS(.v16)
+    static let iOS: SupportedPlatform = .iOS(.v17)
 }
 
 private extension Target {

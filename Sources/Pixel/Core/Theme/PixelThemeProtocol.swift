@@ -16,26 +16,28 @@ import Foundation
 ///
 /// Although not enforced, it is recommended to define custom theme implementations as enums as demonstrated:
 ///
-///     enum MyTheme: PixelThemeProtocol {
+/// ```swift
+/// enum MyTheme: PixelThemeProtocol {
 ///
-///         case light, dark
+///     case light, dark
 ///
-///         static let defaultValue: Self = .light
+///     static let defaultValue: Self = .light
 ///
-///         var colorScheme: any MyColorScheme.Type {
-///             switch self {
-///             case .light: MyLightColorScheme.self
-///             case .dark: MyDarkColorScheme.self
-///             }
-///         }
-///
-///         var typography: any MyTypography.Type {
-///             switch self {
-///             case .light: MyFontTypography.self
-///             case .dark: MyFontTypography.self
-///             }
+///     var colorScheme: any MyColorScheme.Type {
+///         switch self {
+///         case .light: MyLightColorScheme.self
+///         case .dark: MyDarkColorScheme.self
 ///         }
 ///     }
+///
+///     var typography: any MyTypography.Type {
+///         switch self {
+///         case .light: MyFontTypography.self
+///         case .dark: MyFontTypography.self
+///         }
+///     }
+/// }
+/// ```
 public protocol PixelThemeProtocol: CaseIterable, Hashable {
 
     /// Default theme value.
