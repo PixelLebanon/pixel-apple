@@ -56,14 +56,8 @@ private extension SupportedPlatform {
 
 private extension Target {
 
-    static let pixelTarget: Target = target(name: .pixel)
-    static let pixelTestTarget: Target = testTarget(
-        name: .pixel.testTarget,
-        dependencies: [
-            .pixelDependency,
-            .snapKitDependency
-        ]
-    )
+    static let pixelTarget: Target = target(name: .pixel, dependencies: [.snapKitDependency])
+    static let pixelTestTarget: Target = testTarget(name: .pixel.testTarget, dependencies: [.pixelDependency])
 }
 
 private extension Target.Dependency {
