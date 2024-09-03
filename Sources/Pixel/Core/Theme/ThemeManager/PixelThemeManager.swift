@@ -29,5 +29,10 @@ import Observation
 public final class PixelThemeManager<Theme: PixelThemeProtocol> {
 
     /// The current active theme, initially set to `PixelThemeProtocol.defaultValue`.
-    public var theme: Theme = .defaultValue
+    public var theme: Theme
+
+    /// Initializes a `PixelThemeManager` with an initial theme value, defaults to `Theme.defaultValue`.
+    public init(theme: Theme = .defaultValue) {
+        self.theme = theme
+    }
 }
