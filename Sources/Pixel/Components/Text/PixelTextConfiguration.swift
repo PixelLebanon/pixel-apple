@@ -6,13 +6,12 @@
 //  Copyright © 2024 Pixel. All rights reserved.
 //
 
-import PixelCore
 import SwiftUI
 
 public struct PixelTextConfiguration<FontProtocol: PixelFontProtocol, Theme: PixelThemeProtocol> {
 
     let alignment: TextAlignment
-    var colorStyle: PixelColorStyle<Theme>
+    let colorStyle: PixelColorStyle<Theme>
     let fontStyle: PixelFontStyle<FontProtocol, Theme>
     let lineLimit: Int?
 
