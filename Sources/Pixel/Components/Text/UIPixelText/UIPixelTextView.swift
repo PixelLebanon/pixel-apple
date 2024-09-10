@@ -9,39 +9,50 @@
 import SnapKit
 import SwiftUI
 
-public class UIPixelTextView<FontProtocol: PixelFontProtocol, Theme: PixelThemeProtocol>: UIView {
+public class UIPixelTextView<Theme: PixelThemeProtocol>: UIView {
 
     private lazy var view: UIView = {
         let view: UIView = UIHostingConfiguration {
             PixelTextView(configuration: configuration)
+                .environment(themeManager)
         }
         .makeContentView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    private let configuration: PixelTextConfiguration<FontProtocol, Theme>
+    public let configuration: PixelTextView<Theme>.Configuration
 
-    public convenience init(
-        alignment: TextAlignment,
-        colorStyle: PixelColorStyle<Theme>,
-        fontStyle: PixelFontStyle<FontProtocol, Theme>,
+    private let themeManager: PixelThemeManager<Theme>
+
+    public init(
+        alignment: TextAlignment? = nil,
+        colorStyle: PixelColorStyle<Theme>? = nil,
+        fontStyle: PixelFontStyle<Theme>? = nil,
         lineLimit: Int? = nil,
-        text: String
+        text: String,
+        themeManager: PixelThemeManager<Theme>
     ) {
-        self.init(
-            configuration: .init(
-                alignment: alignment,
-                colorStyle: colorStyle.adjustedColorStyle,
-                fontStyle: fontStyle,
-                lineLimit: lineLimit,
-                text: text
-            )
+        self.configuration = .init(
+            alignment: alignment,
+            colorStyle: colorStyle,
+            fontStyle: fontStyle,
+            lineLimit: lineLimit,
+            text: text
         )
+        self.themeManager = themeManager
+
+        super.init(frame: .zero)
+
+        setup()
     }
 
-    public init(configuration: PixelTextConfiguration<FontProtocol, Theme>) {
+    public init(
+        configuration: PixelTextView<Theme>.Configuration,
+        themeManager: PixelThemeManager<Theme>
+    ) {
         self.configuration = configuration
+        self.themeManager = themeManager
 
         super.init(frame: .zero)
 
@@ -50,10 +61,6 @@ public class UIPixelTextView<FontProtocol: PixelFontProtocol, Theme: PixelThemeP
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    public func update(configuration: PixelTextConfiguration<FontProtocol, Theme>) {
-        self.configuration.update(to: configuration)
     }
 
     private func setup() {
@@ -69,23 +76,18 @@ public class UIPixelTextView<FontProtocol: PixelFontProtocol, Theme: PixelThemeP
     }
 }
 
-private extension PixelColorStyle {
+#Preview("Implicit") {
+    UIPixelText(text: "Hello World", themeManager: PixelThemeManager())
+}
 
-    var adjustedColorStyle: PixelColorStyle<Theme> {
-        switch self {
-        case .solid: self
-        case .themed(let colors):
-            .themed(
-                colors: Theme.allCases.reduce(into: [:]) { partialResult, element in
-                    partialResult[element] = colors[element] ?? element.colorScheme.onBackground
-                }
-            )
-        case .conditional(let activeColorStyle, let inactiveColorStyle, let condition):
-            .conditional(
-                activeColorStyle: activeColorStyle.adjustedColorStyle,
-                inactiveColorStyle: inactiveColorStyle.adjustedColorStyle,
-                condition: condition
-            )
-        }
-    }
+#Preview("Explicit") {
+    UIPixelText(
+        configuration: .init(
+            alignment: .center,
+            colorStyle: .solid(Pixel.Dark.onBackground),
+            fontStyle: .solid(PixelFont.superDino1),
+            text: "Hello World"
+        ),
+        themeManager: PixelThemeManager()
+    )
 }

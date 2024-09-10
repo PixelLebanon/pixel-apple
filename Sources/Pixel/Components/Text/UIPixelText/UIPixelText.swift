@@ -8,4 +8,4 @@
 
 import Foundation
 
-public typealias UIPixelText = UIPixelTextView<PixelFont, PixelTheme>
+public typealias UIPixelText = UIPixelTextView<PixelTheme>

@@ -15,7 +15,7 @@ import SwiftUI
 ///
 /// The Pixel design system depends on `PixelFontProtocol` to enable UI framework environment usecases when resolving a
 /// font to a concrete value.
-public protocol PixelFontProtocol {
+public protocol PixelFontProtocol: Equatable {
 
     /// The definition of an empty font instance for the type.
     static var empty: Self { get }

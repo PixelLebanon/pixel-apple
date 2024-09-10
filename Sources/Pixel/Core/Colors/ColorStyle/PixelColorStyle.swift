@@ -26,7 +26,7 @@ public enum PixelColorStyle<Theme: PixelThemeProtocol> {
     /// A dynamic color style that varies depending on the current theme only.
     ///
     /// If no `PixelColor` was mapped to a `Theme` value, returns `Color.clear`.
-    case themed(colors: [Theme: PixelColor])
+    case themed(pixelColors: [Theme: PixelColor])
     /// A dynamic color style that varies depending on the current theme and condition.
     indirect case conditional(activeColorStyle: Self, inactiveColorStyle: Self, condition: Condition)
 }

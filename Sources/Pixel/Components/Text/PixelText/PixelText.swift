@@ -8,4 +8,4 @@
 
 import Foundation
 
-public typealias PixelText = PixelTextView<PixelFont, PixelTheme>
+public typealias PixelText = PixelTextView<PixelTheme>

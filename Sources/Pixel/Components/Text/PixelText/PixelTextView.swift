@@ -8,32 +8,40 @@
 
 import SwiftUI
 
-public struct PixelTextView<FontProtocol: PixelFontProtocol, Theme: PixelThemeProtocol>: View {
+public struct PixelTextView<Theme: PixelThemeProtocol>: View {
 
     @Environment(PixelThemeManager.self) private var themeManager: PixelThemeManager<Theme>
 
     @Environment(\.isFocused) private var isFocused: Bool
 
-    @Bindable var configuration: PixelTextConfiguration<FontProtocol, Theme>
+    private let configuration: Configuration
 
     public init(
-        alignment: TextAlignment = .center,
-        colorStyle: PixelColorStyle<Theme>,
-        fontStyle: PixelFontStyle<FontProtocol, Theme>,
+        alignment: TextAlignment? = nil,
+        colorStyle: PixelColorStyle<Theme>? = nil,
+        fontStyle: PixelFontStyle<Theme>? = nil,
         lineLimit: Int? = nil,
         text: String
     ) {
         self.configuration = .init(
             alignment: alignment,
-            colorStyle: colorStyle.adjustedColorStyle,
+            colorStyle: colorStyle,
             fontStyle: fontStyle,
             lineLimit: lineLimit,
             text: text
         )
     }
 
-    public init(configuration: PixelTextConfiguration<FontProtocol, Theme>) {
+    public init(configuration: Configuration) {
         self.configuration = configuration
+    }
+
+    private var pixelFont: any PixelFontProtocol {
+        configuration.fontStyle.pixelFont(isFocused: isFocused, theme: theme)
+    }
+
+    private var theme: Theme {
+        themeManager.theme
     }
 
     public var body: some View {
@@ -44,6 +52,7 @@ public struct PixelTextView<FontProtocol: PixelFontProtocol, Theme: PixelThemePr
             .lineLimit(lineLimit)
             .multilineTextAlignment(multilineTextAlignment)
             .textCase(textCase)
+            .visibility(.remove, condition: visibilityCondition)
     }
 
     private var text: String {
@@ -51,15 +60,15 @@ public struct PixelTextView<FontProtocol: PixelFontProtocol, Theme: PixelThemePr
     }
 
     private var font: Font {
-        configuration.fontStyle.pixelFont.font
+        pixelFont.font
     }
 
     private var foregroundStyle: Color {
-        configuration.colorStyle.color(isFocused: isFocused, theme: themeManager.theme)
+        configuration.colorStyle.color(isFocused: isFocused, theme: theme)
     }
 
     private var kerning: CGFloat {
-        configuration.fontStyle.pixelFont.kerning
+        pixelFont.kerning
     }
 
     private var lineLimit: Int? {
@@ -71,47 +80,25 @@ public struct PixelTextView<FontProtocol: PixelFontProtocol, Theme: PixelThemePr
     }
 
     private var textCase: Text.Case? {
-        configuration.fontStyle.pixelFont.textCase
+        pixelFont.textCase
+    }
+
+    private var visibilityCondition: Bool {
+        (pixelFont as? PixelFont) == PixelFont.empty
     }
 }
 
-private extension PixelColorStyle {
-
-    var adjustedColorStyle: PixelColorStyle<Theme> {
-        switch self {
-        case .solid: self
-        case .themed(let colors):
-            .themed(
-                colors: Theme.allCases.reduce(into: [:]) { partialResult, element in
-                    partialResult[element] = colors[element] ?? element.colorScheme.onBackground
-                }
-            )
-        case .conditional(let activeColorStyle, let inactiveColorStyle, let condition):
-            .conditional(
-                activeColorStyle: activeColorStyle.adjustedColorStyle,
-                inactiveColorStyle: inactiveColorStyle.adjustedColorStyle,
-                condition: condition
-            )
-        }
-    }
+#Preview("Implicit") {
+    PixelText(text: "Hello World")
+        .environment(PixelThemeManager<PixelTheme>())
 }
 
-#Preview("Automatic") {
-    PixelText(
-        alignment: .center,
-        colorStyle: .themed(colors: [:]),
-        fontStyle: .solid(.superDino1),
-        text: "Hello World"
-    )
-    .environment(PixelThemeManager<PixelTheme>())
-}
-
-#Preview("Manual") {
+#Preview("Explicit") {
     PixelText(
         configuration: .init(
             alignment: .center,
             colorStyle: .solid(Pixel.Dark.onBackground),
-            fontStyle: .solid(.superDino1),
+            fontStyle: .solid(PixelFont.superDino1),
             text: "Hello World"
         )
     )
