@@ -19,13 +19,13 @@ public struct PixelColor {
     /// A UIKit color concrete value.
     public let uiColor: UIColor
 
-    /// Initialize a `PixelColor` with a `Color`.
+    /// Initialize the type with a `Color`.
     public init(_ color: Color) {
         self.color = color
         self.uiColor = .init(color)
     }
 
-    /// Initialize a `PixelColor` with a `ColorResource`.
+    /// Initialize the type with a `ColorResource`.
     init(_ resource: ColorResource) {
         self.color = .init(resource)
         self.uiColor = .init(resource: resource)
