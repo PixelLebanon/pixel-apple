@@ -10,8 +10,10 @@ import Foundation
 
 extension Pixel {
 
+    /// A type defining the set of components in the Pixel design system.
     enum Component {
 
+        /// The text component.
         case text
     }
 }

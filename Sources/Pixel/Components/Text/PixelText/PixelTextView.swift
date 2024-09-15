@@ -36,12 +36,12 @@ public struct PixelTextView<Theme: PixelThemeProtocol>: View {
         self.configuration = configuration
     }
 
-    private var pixelFont: any PixelFontProtocol {
-        configuration.fontStyle.pixelFont(isFocused: isFocused, theme: theme)
-    }
-
     private var theme: Theme {
         themeManager.theme
+    }
+
+    private var pixelFont: any PixelFontProtocol {
+        configuration.fontStyle.pixelFont(isFocused: isFocused, theme: theme)
     }
 
     public var body: some View {
