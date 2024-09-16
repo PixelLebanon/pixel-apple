@@ -9,9 +9,7 @@ let package = Package(
     products: [
         .pixelProduct
     ],
-    dependencies: [
-        .snapKitPackageDependency
-    ],
+    dependencies: [],
     targets: [
         .pixelTarget,
         .pixelTestTarget
@@ -19,11 +17,6 @@ let package = Package(
 )
 
 private extension Package.Dependency {
-
-    static let snapKitPackageDependency: Package.Dependency = package(
-        url: "https://github.com/SnapKit/SnapKit.git",
-        exact: "5.7.1"
-    )
 }
 
 private extension Product {
@@ -40,7 +33,6 @@ private extension String {
     static let pixel: Self = "Pixel"
 
     // MARK: Packages
-    static let snapKit: Self = "SnapKit"
 
     // MARK: Plugins
     static let swiftLint: Self = "SwiftLint"
@@ -56,7 +48,7 @@ private extension SupportedPlatform {
 
 private extension Target {
 
-    static let pixelTarget: Target = target(name: .pixel, dependencies: [.snapKitDependency])
+    static let pixelTarget: Target = target(name: .pixel)
     static let pixelTestTarget: Target = testTarget(name: .pixel.testTarget, dependencies: [.pixelDependency])
 }
 
@@ -66,7 +58,6 @@ private extension Target.Dependency {
     static let pixelDependency: Self = byName(name: .pixel)
 
     // MARK: Packages
-    static let snapKitDependency: Self = byName(name: .snapKit)
 }
 
 private extension Target.PluginUsage {

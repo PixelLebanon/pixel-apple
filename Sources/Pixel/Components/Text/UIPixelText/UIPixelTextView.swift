@@ -6,7 +6,6 @@
 //  Copyright © 2024 Pixel. All rights reserved.
 //
 
-import SnapKit
 import SwiftUI
 
 public class UIPixelTextView<Theme: PixelThemeProtocol>: UIView {
@@ -70,9 +69,12 @@ public class UIPixelTextView<Theme: PixelThemeProtocol>: UIView {
     }
 
     private func layout() {
-        view.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            view.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            view.topAnchor.constraint(equalTo: self.topAnchor),
+            view.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
     }
 }
 

@@ -8,4 +8,5 @@
 
 import Foundation
 
+/// A shorthand type alias of a `PixelTextView` with the default Pixel Design System theme implementation.
 public typealias PixelText = PixelTextView<PixelTheme>
