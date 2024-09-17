@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// A view displaying a styled text from the Pixel Design System.
+/// A view displaying a SwiftUI styled text from the Pixel Design System.
 ///
 /// The view can be initialized either explicitly or implicity depending on the app usecase and it must contain a
 /// `PixelThemeManager` in its environment heirarchy.
