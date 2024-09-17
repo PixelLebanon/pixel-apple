@@ -10,6 +10,8 @@ import Foundation
 
 extension PixelColorStyle {
 
+    /// Returns a themed `PixelColorStyle` to replace all `nil` values of each `Theme` case in `pixelColors` with the
+    /// component's default `PixelColor`.
     private static func implicitThemed(component: Pixel.Component, pixelColors: [Theme: PixelColor] = [:]) -> Self {
         .themed(
             pixelColors: Theme.allCases.reduce(into: [:]) { partialResult, theme in
@@ -18,10 +20,12 @@ extension PixelColorStyle {
         )
     }
 
+    /// Returns a themed `PixelColorStyle` with each `Theme` case containing the component's default `PixelColor`.
     static func defaultImplicitStyle(of component: Pixel.Component) -> Self {
         implicitThemed(component: component)
     }
 
+    /// Returns a `PixelColorStyle` that replaces all empty values with component's default theme `PixelColor` value.
     func implicitStyle(of component: Pixel.Component) -> Self {
         switch self {
         case .solid: self

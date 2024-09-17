@@ -10,6 +10,8 @@ import Foundation
 
 extension PixelFontStyle {
 
+    /// Returns a themed `PixelFontStyle` to replace all `nil` values of each `Theme` case in `pixelFonts` with the
+    /// component's default `PixelFont`.
     private static func implicitThemed(
         component: Pixel.Component,
         pixelFonts: [Theme: any PixelFontProtocol] = [:]
@@ -21,10 +23,12 @@ extension PixelFontStyle {
         )
     }
 
+    /// Returns a themed `PixelFontStyle` with each `Theme` case containing the component's default `PixelFont`.
     static func defaultImplicitStyle(of component: Pixel.Component) -> Self {
         implicitThemed(component: component)
     }
 
+    /// Returns a `PixelFontStyle` that replaces all empty values with component's default theme `PixelFont` value.
     func implicitStyle(of component: Pixel.Component) -> Self {
         switch self {
         case .solid: self
