@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: .module,
-    platforms: [.iOS],
+    platforms: [.iOS(.v17)],
     products: [
         .pixelProduct
     ],
@@ -39,11 +39,6 @@ private extension String {
     static let swiftLintPlugin: Self = "SwiftLintBuildToolPlugin"
 
     var testTarget: Self { "\(self)Tests" }
-}
-
-private extension SupportedPlatform {
-
-    static let iOS: Self = .iOS(.v17)
 }
 
 private extension Target {

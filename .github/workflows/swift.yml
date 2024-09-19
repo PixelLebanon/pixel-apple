@@ -7,12 +7,18 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build_package:
+    name: Build Swift Package
     runs-on: macos-latest
-
     steps:
     - uses: actions/checkout@v4
-    - name: Build Swift Package
-      run: swift build -v
-    - name: Run Swift Package Tests
+    - name: Build Package
+      run: swift build -v -Xswiftc "-sdk" -Xswiftc "$(xcrun --sdk iphonesimulator --show-sdk-path)" -Xswiftc "-target" -Xswiftc "arm64-apple-ios17.0-simulator"
+
+  test_package:
+    name: Test Swift Package
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Run Package Tests
       run: swift test -v
