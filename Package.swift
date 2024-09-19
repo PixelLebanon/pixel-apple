@@ -27,23 +27,23 @@ private extension Product {
 private extension String {
 
     // MARK: Module
-    static let module: String = "Pixel"
+    static let module: Self = "Pixel"
 
     // MARK: Submodules
-    static let pixel: String = "Pixel"
+    static let pixel: Self = "Pixel"
 
     // MARK: Packages
 
     // MARK: Plugins
-    static let swiftLint: String = "SwiftLint"
-    static let swiftLintPlugin: String = "SwiftLintBuildToolPlugin"
+    static let swiftLint: Self = "SwiftLint"
+    static let swiftLintPlugin: Self = "SwiftLintBuildToolPlugin"
 
-    var testTarget: String { "\(self)Tests" }
+    var testTarget: Self { "\(self)Tests" }
 }
 
 private extension SupportedPlatform {
 
-    static let iOS: SupportedPlatform = .iOS(.v17)
+    static let iOS: Self = .iOS(.v17)
 }
 
 private extension Target {
@@ -55,7 +55,7 @@ private extension Target {
 private extension Target.Dependency {
 
     // MARK: Submodules
-    static let pixelDependency: Target.Dependency = byName(name: .pixel)
+    static let pixelDependency: Self = byName(name: .pixel)
 
     // MARK: Packages
 }

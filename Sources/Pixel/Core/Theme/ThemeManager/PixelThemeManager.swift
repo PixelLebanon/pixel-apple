@@ -28,7 +28,7 @@ import Observation
 @Observable
 public final class PixelThemeManager<Theme: PixelThemeProtocol> {
 
-    /// The current active theme, initially set to `PixelThemeProtocol.defaultValue`.
+    /// The current active theme.
     public var theme: Theme
 
     /// Initializes a `PixelThemeManager` with an initial theme value, defaults to `Theme.defaultValue`.

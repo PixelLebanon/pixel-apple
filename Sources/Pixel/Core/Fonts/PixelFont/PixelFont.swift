@@ -14,8 +14,8 @@ public struct PixelFont: PixelFontProtocol {
     /// The definition of an empty `PixelFont` instance.
     public static let empty: Self = .init(name: "", size: 0, style: .body, textCase: nil)
 
-    /// A float defining the spacing between characters in `PixelFont` is always 0.
-    public let letterSpacing: CGFloat = 0
+    /// A float defining the spacing between characters in `PixelFont` and is always 0.
+    public let kerning: CGFloat = 0
     /// A string defining the `PixelFont` name to be used.
     public let name: String
     /// A float defining the `PixelFont` size.

@@ -15,13 +15,13 @@ import SwiftUI
 ///
 /// The Pixel design system depends on `PixelFontProtocol` to enable UI framework environment usecases when resolving a
 /// font to a concrete value.
-public protocol PixelFontProtocol {
+public protocol PixelFontProtocol: Equatable {
 
     /// The definition of an empty font instance for the type.
     static var empty: Self { get }
 
-    /// A float defining how much spacing between characters (kerning) should be applied to the font.
-    var letterSpacing: CGFloat { get }
+    /// A float defining how much spacing between characters should be applied to the font.
+    var kerning: CGFloat { get }
     /// A string defining the font name to be used.
     var name: String { get }
     /// A float defining the size to be applied to the font.
