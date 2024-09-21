@@ -19,8 +19,10 @@ jobs:
         path: ~/Library/Developer/Xcode/DerivedData
         key: build-cache-${{ runner.os }}-${{ github.sha }}
         restore-keys: build-cache-${{ runner.os }}-
-    - name: Build package ( iPhone 15 Pro, iOS 15.0)
+    - name: Build package ( iPhone 15 Pro, iOS 17.0)
       run: xcodebuild -scheme Pixel -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0' build
+    - name: Build package ( iPhone 16 Pro, iOS 18.0)
+      run: xcodebuild -scheme Pixel -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.0' build
 
 #  test_package:
 #    name: Test Swift Package
