@@ -31,7 +31,7 @@ public final class PixelThemeManager<Theme: PixelThemeProtocol> {
     /// The current active theme.
     public var theme: Theme
 
-    /// Initializes a `PixelThemeManager` with an initial theme value, defaults to `Theme.defaultValue`.
+    /// Initializes the type with a `PixelThemeProtocol`, defaults to `PixelThemeProtocol.defaultValue`.
     public init(theme: Theme = .defaultValue) {
         self.theme = theme
     }

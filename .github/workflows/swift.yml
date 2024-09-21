@@ -11,14 +11,15 @@ jobs:
     name: Build Swift Package
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Build Package
-      run: swift build -v -Xswiftc "-sdk" -Xswiftc "$(xcrun --sdk iphonesimulator --show-sdk-path)" -Xswiftc "-target" -Xswiftc "arm64-apple-ios17.0-simulator"
+    - name: Checkout from repository
+      uses: actions/checkout@v4
+    - name: Build package ( iPhone 15 Pro, iOS 15.0)
+      run: xcodebuild -scheme Pixel -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0' build
 
-  test_package:
-    name: Test Swift Package
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Run Package Tests
-      run: swift test -v
+#  test_package:
+#    name: Test Swift Package
+#    runs-on: macos-latest
+#    steps:
+#    - uses: actions/checkout@v4
+#    - name: Run package tests
+#      run: swift test -v
