@@ -32,6 +32,7 @@ public struct PixelFont: PixelFontProtocol {
 
     /// A UIKit `PixelFont` font concrete value.
     public var uiFont: UIFont {
+        // swiftlint:disable:next force_unwrapping
         .init(name: name, size: size)!
     }
 }

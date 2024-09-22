@@ -6,6 +6,8 @@
 //  Copyright © 2024 Pixel. All rights reserved.
 //
 
+// swiftlint:disable identifier_name
+
 import Foundation
 
 public extension CGFloat.Pixel {
@@ -63,3 +65,5 @@ public extension CGFloat.Pixel {
     /// Padding value of 50.
     static let p25: CGFloat = 50
 }
+
+// swiftlint:enable identifier_name

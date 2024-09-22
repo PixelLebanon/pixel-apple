@@ -21,9 +21,17 @@ public enum PixelTheme: PixelThemeProtocol, Codable {
 
     /// The default theme value, determined by the user's pereferences. If not previously set, defaults to the system's
     /// current interface style.
-    @PixelUserDefaultsActor
-    public static var defaultValue: Self {
+    @PixelUserDefaultsActor public static var defaultValue: Self {
         UserDefaults.standard.pixelTheme ?? .init(UITraitCollection.current.userInterfaceStyle)
+    }
+
+    /// Initialize a `PixelTheme` based on the current `UIUserInterfaceStyle` value.
+    private init(_ userInterfaceStyle: UIUserInterfaceStyle) {
+        switch userInterfaceStyle {
+        case .light: self = .light
+        case .dark: self = .dark
+        default: self = .light
+        }
     }
 
     /// The color scheme associated with the theme.
@@ -47,18 +55,6 @@ public enum PixelTheme: PixelThemeProtocol, Codable {
         switch self {
         case .light: PixelFont.self
         case .dark: PixelFont.self
-        }
-    }
-}
-
-private extension PixelTheme {
-
-    /// Initialize a `PixelTheme` based on the current `UIUserInterfaceStyle` value.
-    init(_ userInterfaceStyle: UIUserInterfaceStyle) {
-        switch userInterfaceStyle {
-        case .light: self = .light
-        case .dark: self = .dark
-        default: self = .light
         }
     }
 }

@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build_package:
+  build_swift_package:
     name: Build Swift Package
     runs-on: macos-latest
     steps:
@@ -19,7 +19,7 @@ jobs:
       run: xcodebuild -scheme Pixel -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.0' build
 
 # Note: Figure out how to optimize test speed (Averaging 3 minutes now)
-#  test_package:
+#  test_swift_package:
 #    name: Test Swift Package
 #    runs-on: macos-latest
 #    steps:

@@ -15,7 +15,7 @@ import Foundation
 ///
 /// Conforming to this protocol would help improve color accessibility and consistency throughout your app.
 public protocol PixelColorScheme {
-    
+
     /// The primary color used for prominent UI elements like buttons, links, or selected states.
     static var primary: PixelColor { get }
     /// The color used for text or icons displayed on top of the `primary` color.

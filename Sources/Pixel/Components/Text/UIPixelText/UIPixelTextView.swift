@@ -67,6 +67,7 @@ public class UIPixelTextView<Theme: PixelThemeProtocol>: UIView {
     }
 
     /// Required initializer for `NSCoder`. Not implemented.
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

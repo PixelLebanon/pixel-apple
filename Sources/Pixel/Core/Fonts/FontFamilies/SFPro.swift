@@ -39,8 +39,8 @@ struct SFPro {
     ///
     /// - Parameter name: The name of the font's file that must also match its Postscript name.
     ///
-    /// - Note: The fonts must be included in the application's bundle within the "SF Pro" directory for the `registerFont`
-    ///   function to load and register them.
+    /// - Note: The fonts must be included in the application's bundle within the "SF Pro" directory for the
+    /// `registerFont` function to load and register them.
     private init(name: String) {
         self.name = name
 

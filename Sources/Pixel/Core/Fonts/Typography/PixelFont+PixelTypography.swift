@@ -6,6 +6,8 @@
 //  Copyright © 2024 Pixel. All rights reserved.
 //
 
+// swiftlint:disable no_magic_numbers
+
 import Foundation
 
 /// A private constant shortcut for the SFPro bold font weight name
@@ -90,3 +92,5 @@ extension PixelFont: PixelTypography {
     /// The `PixelFont` all-caps Super Small font.
     public static let capsSuperSmall: Self = .init(name: boldFont, size: 9, style: .caption2, textCase: .uppercase)
 }
+
+// swiftlint:enable no_magic_numbers

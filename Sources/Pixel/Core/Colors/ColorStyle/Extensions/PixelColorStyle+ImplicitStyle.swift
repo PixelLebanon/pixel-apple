@@ -29,8 +29,8 @@ extension PixelColorStyle {
     func implicitStyle(of component: Pixel.Component) -> Self {
         switch self {
         case .solid: self
-        case .themed(let pixelColors): .implicitThemed(component: component, pixelColors: pixelColors)
-        case .conditional(let activeColorStyle, let inactiveColorStyle, let condition):
+        case let .themed(pixelColors): .implicitThemed(component: component, pixelColors: pixelColors)
+        case let .conditional(activeColorStyle, inactiveColorStyle, condition):
             .conditional(
                 activeColorStyle: activeColorStyle.implicitStyle(of: component),
                 inactiveColorStyle: inactiveColorStyle.implicitStyle(of: component),

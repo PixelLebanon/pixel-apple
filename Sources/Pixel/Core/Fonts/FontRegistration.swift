@@ -14,8 +14,8 @@ import UIKit
 ///
 /// - Parameter path: A `String` representing the name of the font asset to be registered.
 ///
-/// - Note: The font asset's name defined in the assets catalogue usually must match the same name as the font file. If it was
-/// installed through the Font Book app, you can use it to find its Postscript name.
+/// - Note: The font asset's name defined in the assets catalogue usually must match the same name as the font file. If
+///   it was installed through the Font Book app, you can use it to find its Postscript name.
 /// - Throws: An error of type `RegistrationError` on failure.
 func registerFont(path: String) throws {
     enum RegistrationError: Error {
@@ -24,7 +24,7 @@ func registerFont(path: String) throws {
     }
 
     guard let asset: NSDataAsset = .init(name: path, bundle: .module) else { throw RegistrationError.invalidPath }
-    guard let provider: CGDataProvider = .init(data: asset.data as NSData),
+    guard let provider: CGDataProvider = .init(data: asset.data as CFData),
           let font: CGFont = .init(provider),
           CTFontManagerRegisterGraphicsFont(font, nil) else { throw RegistrationError.failedFontRegistration }
 }

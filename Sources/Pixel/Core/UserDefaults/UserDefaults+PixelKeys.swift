@@ -29,8 +29,7 @@ public extension UserDefaults {
             guard let data: Data = UserDefaults.standard.data(forKey: Pixel.Key.theme) else { return nil }
 
             do {
-                let pixelTheme: PixelTheme = try Self.decoder.decode(PixelTheme.self, from: data)
-                return pixelTheme
+                return try Self.decoder.decode(PixelTheme.self, from: data)
             } catch {
                 print("UserDefaults+PixelKeys: Could not decode PixelTheme, returning default value.")
                 return .defaultValue
