@@ -38,13 +38,13 @@ private extension String {
     static let swiftLint: Self = "SwiftLint"
     static let swiftLintPlugin: Self = "SwiftLintBuildToolPlugin"
 
-    var testTarget: Self { "\(self)Tests" }
+    var test: Self { "\(self)Tests" }
 }
 
 private extension Target {
 
     static let pixelTarget: Target = target(name: .pixel)
-    static let pixelTestTarget: Target = testTarget(name: .pixel.testTarget, dependencies: [.pixelDependency])
+    static let pixelTestTarget: Target = testTarget(name: .pixel.test, dependencies: [.pixelDependency])
 }
 
 private extension Target.Dependency {
