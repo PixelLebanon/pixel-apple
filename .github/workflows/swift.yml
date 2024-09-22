@@ -24,9 +24,7 @@ jobs:
     steps:
     - name: Checkout from repository
       uses: actions/checkout@v4
-    - name: List available simulators
-      run: xcodebuild -showdestinations -scheme PixelTests
-    - name: Test package ( iPhone 15 Pro, iOS 17.0)
-      run: xcodebuild test -scheme PixelTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0'
-    - name: Test package ( iPhone 16 Pro, iOS 18.0)
-      run: xcodebuild test -scheme PixelTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.0'
+    - name: Test package ( iPhone 15 Pro, iOS 17.0.1)
+      run: xcodebuild test -scheme PixelTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0.1'
+    - name: Test package ( iPhone 15 Pro, iOS 18.0)
+      run: xcodebuild test -scheme PixelTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=18.0'
