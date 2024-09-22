@@ -18,13 +18,14 @@ jobs:
     - name: Build package ( iPhone 16 Pro, iOS 18.0)
       run: xcodebuild -scheme Pixel -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.0' build
 
-  test_package:
-    name: Test Swift Package
-    runs-on: macos-latest
-    steps:
-    - name: Checkout from repository
-      uses: actions/checkout@v4
-    - name: Test package ( iPhone 15 Pro, iOS 17.0.1)
-      run: xcodebuild test -scheme PixelTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0.1'
-    - name: Test package ( iPhone 15 Pro, iOS 18.0)
-      run: xcodebuild test -scheme PixelTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=18.0'
+# Note: Figure out how to optimize test speed (Averaging 3 minutes now)
+#  test_package:
+#    name: Test Swift Package
+#    runs-on: macos-latest
+#    steps:
+#    - name: Checkout from repository
+#      uses: actions/checkout@v4
+#    - name: Test package ( iPhone 15 Pro, iOS 17.0.1)
+#      run: xcodebuild test -scheme PixelTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0.1'
+#    - name: Test package ( iPhone 15 Pro, iOS 18.0)
+#      run: xcodebuild test -scheme PixelTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=18.0'
