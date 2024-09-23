@@ -1,0 +1,16 @@
+name: Linter
+
+on:
+  pull_request
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout from repository
+        uses: actions/checkout@v4
+      - name: Run SwiftLint (strict)
+        uses: stanfordbdhg/action-swiftlint@v4
+        with:
+          args: --strict

@@ -6,11 +6,8 @@
 //  Copyright © 2024 Pixel. All rights reserved.
 //
 
-import XCTest
 @testable import Pixel
+import XCTest
 
 final class PixelTests: XCTestCase {
-
-    func testExample() throws {
-    }
 }

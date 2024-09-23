@@ -176,7 +176,7 @@ file_header:
   required_pattern: |
                     \/\/
                     \/\/  .*?\.swift
-                    \/\/  Pixel
+                    \/\/  [Pixel, PixelTests]+
                     \/\/
                     \/\/  Created by .*? on \d{1,2}\/\d{1,2}\/\d{4}\.
                     \/\/  Copyright © \d{4} Pixel\. All rights reserved\.
@@ -207,6 +207,10 @@ type_contents_order:
 
 # If true, will not cause an Xcode build error if no lintable files are found
 allow_zero_lintable_files: false
+
+# Excluded files/folders from linter
+excluded:
+  - Package.swift
 
 # Reporter type to use, options:
 # (checkstyle, codeclimate, csv, emoji, github-actions-logging, html, json, junit, markdown, sonarqube, summary, xcode)
