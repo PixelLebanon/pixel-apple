@@ -114,7 +114,6 @@ opt_in_rules:
   - yoda_condition
 
 # Analyzer rule identifiers turned off automatically that need to be enabled
-# Note: The rules are ran using `swiftlint analyze`
 analyzer_rules:
   - capture_variable
   - typesafe_array_init
@@ -122,49 +121,6 @@ analyzer_rules:
   - unused_import
 
 ### MARK: Rule Configurations
-
-##### Configuration examples:
-#
-### Binary rules
-#
-# Implicitly:
-#   force_cast: warning
-# Explicitly:
-#   force_try:
-#     severity: warning
-#
-### Warning & Error Level Rules
-#
-# Note: Can set just the warning level
-# Implicitly:
-#   line_length: 120 # warning
-#   type_body_length:
-#       - 300 # warning
-#       - 400 # error
-# Explicitly:
-#   file_length:
-#       warning: 500
-#       error: 1200
-#
-### Naming Rules
-#
-# Note: Can set just the warning level, excluded names, and allowed symbols
-# Implicitly:
-#   type_name:
-#       min_length: 2 # warning
-#       max_length:
-#           - 40 # warning
-#           - 50 # error
-#       excluded: iPhone
-#       allowed_symbols: ["_"]
-# Explicitly:
-#   nesting:
-#       function_level:
-#           warning: 5
-#           error: 6
-#       type_level:
-#           warning: 5
-#           error: 6
 
 attributes:
   attributes_with_arguments_always_on_line_above: false
@@ -187,6 +143,9 @@ large_tuple: 3
 nesting:
   type_level: 2
 
+# Note: May need to be uncommented
+#type_body_length: 500
+
 type_contents_order:
     order: [
       [associated_type, type_alias],
@@ -199,9 +158,6 @@ type_contents_order:
       [other_method],
       [subscript]
     ]
-
-# Note: May need to be uncommented
-#type_body_length: 500
 
 ### MARK: SwiftLint Configuration
 

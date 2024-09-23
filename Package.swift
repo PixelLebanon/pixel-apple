@@ -42,7 +42,9 @@ private extension String {
     static let swiftLint: Self = "SwiftLintBuildToolPlugin"
     static let swiftLintPackage: Self = "SwiftLint"
 
-    var test: Self { "\(self)Tests" }
+    var test: Self {
+        "\(self)Tests"
+    }
 }
 
 private extension Target {

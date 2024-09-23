@@ -1,9 +1,9 @@
 name: Swift
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
+    branches: [ "main" ]
+  push:
     branches: [ "main" ]
 
 jobs:
@@ -14,11 +14,11 @@ jobs:
     - name: Checkout from repository
       uses: actions/checkout@v4
     - name: Build package ( iPhone 15 Pro, iOS 17.0)
-      run: xcodebuild -scheme Pixel -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0' build
+      run: xcodebuild -scheme Pixel -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0' build -skipPackagePluginValidation
     - name: Build package ( iPhone 16 Pro, iOS 18.0)
-      run: xcodebuild -scheme Pixel -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.0' build
+      run: xcodebuild -scheme Pixel -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.0' build -skipPackagePluginValidation
 
-# Note: Figure out how to optimize test speed (Averaging 3 minutes now)
+# TODO: Optimize test speed (Currently averages 3 minutes)
 #  test_swift_package:
 #    name: Test Swift Package
 #    runs-on: macos-latest
@@ -26,6 +26,6 @@ jobs:
 #    - name: Checkout from repository
 #      uses: actions/checkout@v4
 #    - name: Test package ( iPhone 15 Pro, iOS 17.0.1)
-#      run: xcodebuild test -scheme PixelTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0.1'
+#      run: xcodebuild -scheme PixelTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0.1' test -skipPackagePluginValidation
 #    - name: Test package ( iPhone 15 Pro, iOS 18.0)
-#      run: xcodebuild test -scheme PixelTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=18.0'
+#      run: xcodebuild -scheme PixelTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=18.0' test -skipPackagePluginValidation
