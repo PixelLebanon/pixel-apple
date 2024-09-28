@@ -9,7 +9,7 @@
 import Foundation
 
 extension Pixel {
-    
+
     /// A local enum namespace to prevent name conflicts with native or third party frameworks and encapsulate Pixel key
     /// definitions in `UserDefaults`.
     enum Key {

@@ -14,7 +14,7 @@ public extension PixelColorStyle {
     /// will default to `UIColor.clear`.
     var uiColor: UIColor {
         switch self {
-        case .solid(let pixelColor): pixelColor.uiColor
+        case let .solid(pixelColor): pixelColor.uiColor
         default: .clear
         }
     }
@@ -23,8 +23,8 @@ public extension PixelColorStyle {
     /// will default to `UIColor.clear`.
     func uiColor(theme: Theme) -> UIColor {
         switch self {
-        case .solid(let pixelColor): pixelColor.uiColor
-        case .themed(let pixelColors): pixelColors[theme]?.uiColor ?? .clear
+        case let .solid(pixelColor): pixelColor.uiColor
+        case let .themed(pixelColors): pixelColors[theme]?.uiColor ?? .clear
         default: .clear
         }
     }
@@ -32,11 +32,11 @@ public extension PixelColorStyle {
     /// A method to retrieve the UIKit color concrete value of any color style.
     func uiColor(isFocused: Bool, theme: Theme) -> UIColor {
         switch self {
-        case .solid(let pixelColor):
+        case let .solid(pixelColor):
             return pixelColor.uiColor
-        case .themed(let pixelColors):
+        case let .themed(pixelColors):
             return pixelColors[theme]?.uiColor ?? .clear
-        case .conditional(let activeColorStyle, let inactiveColorStyle, let condition):
+        case let .conditional(activeColorStyle, inactiveColorStyle, condition):
             let isActive: Bool = switch condition {
             case .focus: isFocused
             case .custom(let isActive): isActive
@@ -47,4 +47,3 @@ public extension PixelColorStyle {
         }
     }
 }
-

@@ -1,27 +1,31 @@
 // swift-tools-version: 5.10
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
-let package = Package(
+let package: Package = .init(
     name: .module,
-    platforms: [.iOS],
+    platforms: [.iOS(.v17)],
     products: [
-        .pixelProduct
+        .pixel
     ],
-    dependencies: [],
+    dependencies: [
+        // MARK: Plugins
+        .swiftLint
+    ],
     targets: [
-        .pixelTarget,
-        .pixelTestTarget
+        .pixel,
+        .pixelTest
     ]
 )
 
 private extension Package.Dependency {
+
+    static let swiftLint: Package.Dependency = package(url: "https://github.com/realm/SwiftLint.git", exact: "0.57.0")
 }
 
 private extension Product {
 
-    static let pixelProduct: Product = .library(name: .pixel, targets: [.pixel])
+    static let pixel: Product = .library(name: .pixel, targets: [.pixel])
 }
 
 private extension String {
@@ -35,30 +39,29 @@ private extension String {
     // MARK: Packages
 
     // MARK: Plugins
-    static let swiftLint: Self = "SwiftLint"
-    static let swiftLintPlugin: Self = "SwiftLintBuildToolPlugin"
+    static let swiftLint: Self = "SwiftLintBuildToolPlugin"
+    static let swiftLintPackage: Self = "SwiftLint"
 
-    var testTarget: Self { "\(self)Tests" }
-}
-
-private extension SupportedPlatform {
-
-    static let iOS: Self = .iOS(.v17)
+    var test: Self {
+        "\(self)Tests"
+    }
 }
 
 private extension Target {
 
-    static let pixelTarget: Target = target(name: .pixel)
-    static let pixelTestTarget: Target = testTarget(name: .pixel.testTarget, dependencies: [.pixelDependency])
+    static let pixel: Target = target(name: .pixel, plugins: [.swiftLint])
+    static let pixelTest: Target = testTarget(name: .pixel.test, dependencies: [.pixel], plugins: [.swiftLint])
 }
 
 private extension Target.Dependency {
 
     // MARK: Submodules
-    static let pixelDependency: Self = byName(name: .pixel)
+    static let pixel: Self = byName(name: .pixel)
 
     // MARK: Packages
 }
 
 private extension Target.PluginUsage {
+
+    static let swiftLint: Self = plugin(name: .swiftLint, package: .swiftLintPackage)
 }

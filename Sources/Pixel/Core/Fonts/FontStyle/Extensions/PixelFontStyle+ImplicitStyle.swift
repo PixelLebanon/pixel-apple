@@ -32,8 +32,8 @@ extension PixelFontStyle {
     func implicitStyle(of component: Pixel.Component) -> Self {
         switch self {
         case .solid: self
-        case .themed(let pixelFonts): .implicitThemed(component: component, pixelFonts: pixelFonts)
-        case .conditional(let activeFontStyle, let inactiveFontStyle, let condition):
+        case let .themed(pixelFonts): .implicitThemed(component: component, pixelFonts: pixelFonts)
+        case let .conditional(activeFontStyle, inactiveFontStyle, condition):
             .conditional(
                 activeFontStyle: activeFontStyle.implicitStyle(of: component),
                 inactiveFontStyle: inactiveFontStyle.implicitStyle(of: component),
