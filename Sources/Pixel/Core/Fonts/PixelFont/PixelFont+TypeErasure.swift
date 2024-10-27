@@ -6,7 +6,7 @@
 //  Copyright © 2024 Pixel. All rights reserved.
 //
 
-public extension PixelFontProtocol {
+public extension PixelFont {
 
     var eraseToAnyPixelFont: AnyPixelFont {
         .init(self)

@@ -21,7 +21,7 @@ public extension PixelColorStyle {
 
     /// A method to retrieve the UIKit color concrete value of a `solid` or `themed` color style. Any other color style
     /// will default to `UIColor.clear`.
-    func uiColor(theme: Theme) -> UIColor {
+    func uiColor(theme: PixelTheme) -> UIColor {
         switch self {
         case let .solid(pixelColor): pixelColor.uiColor
         case let .themed(pixelColors): pixelColors[theme]?.uiColor ?? .clear
@@ -30,7 +30,7 @@ public extension PixelColorStyle {
     }
 
     /// A method to retrieve the UIKit color concrete value of any color style.
-    func uiColor(isFocused: Bool, theme: Theme) -> UIColor {
+    func uiColor(isFocused: Bool, theme: PixelTheme) -> UIColor {
         switch self {
         case let .solid(pixelColor):
             return pixelColor.uiColor

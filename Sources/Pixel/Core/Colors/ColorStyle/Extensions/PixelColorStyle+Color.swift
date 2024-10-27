@@ -10,8 +10,6 @@ import SwiftUI
 
 public extension PixelColorStyle {
 
-    /// A computed property to retrieve the SwiftUI color concrete value of a `solid` color style. Any other color
-    /// style will default to `Color.clear`.
     var color: Color {
         switch self {
         case let .solid(pixelColor): pixelColor.color
@@ -19,9 +17,7 @@ public extension PixelColorStyle {
         }
     }
 
-    /// A method to retrieve the SwiftUI color concrete value of a `solid` or `themed` color style. Any other color
-    /// style will default to `Color.clear`.
-    func color(theme: Theme) -> Color {
+    func color(theme: PixelTheme) -> Color {
         switch self {
         case let .solid(pixelColor): pixelColor.color
         case let .themed(pixelColors): pixelColors[theme]?.color ?? .clear
@@ -30,7 +26,7 @@ public extension PixelColorStyle {
     }
 
     /// A method to retrieve the SwiftUI color concrete value of any color style.
-    func color(isFocused: Bool, theme: Theme) -> Color {
+    func color(isFocused: Bool, theme: PixelTheme) -> Color {
         switch self {
         case let .solid(pixelColor):
             return pixelColor.color

@@ -1,5 +1,5 @@
 //
-//  PixelTextView.swift
+//  PixelText.swift
 //  Pixel
 //
 //  Created by Khaled Chehabeddine on 16/05/2024.
@@ -9,6 +9,30 @@
 import SwiftUI
 
 public struct PixelText: View {
+
+    private struct ContentView: View {
+
+        @Environment(\.font) private var font: Font?
+        @Environment(\.textColor) private var textColor: Color
+        @Environment(\.kerning) private var kerning: CGFloat
+        @Environment(\.lineLimit) private var lineLimit: Int?
+        @Environment(\.multilineTextAlignment) private var multiLineTextAlignment: TextAlignment
+        @Environment(\.textCase) private var textCase: Text.Case?
+        @Environment(\.visibility) private var visibility: Visibility
+
+        let text: String
+
+        var body: some View {
+            Text(text)
+                .font(font)
+                .foregroundStyle(textColor)
+                .kerning(kerning)
+                .lineLimit(lineLimit)
+                .multilineTextAlignment(multiLineTextAlignment)
+                .textCase(textCase)
+                .visibility(is: visibility)
+        }
+    }
 
     @Environment(\.isFocused) private var isFocused: Bool
 
@@ -34,23 +58,23 @@ public struct PixelText: View {
         self.configuration = configuration
     }
 
-    private var theme: Theme {
-        themeManager.theme
-    }
+//    private var theme: Theme {
+//        themeManager.theme
+//    }
 
-    private var pixelFont: any PixelFontProtocol {
-        configuration.fontStyle.pixelFont(isFocused: isFocused, theme: theme)
+    private var pixelFont: AnyPixelFont {
+        configuration.fontStyle.pixelFont(isFocused: isFocused, theme: .light)
     }
 
     public var body: some View {
-        Text(text)
+        ContentView(text: text)
             .font(font)
-            .foregroundStyle(foregroundStyle)
             .kerning(kerning)
             .lineLimit(lineLimit)
             .multilineTextAlignment(multilineTextAlignment)
             .textCase(textCase)
-            .visibility(.remove, condition: visibilityCondition)
+            .textColor(textColor)
+            .visibility(visibility)
     }
 
     private var text: String {
@@ -61,8 +85,8 @@ public struct PixelText: View {
         pixelFont.font
     }
 
-    private var foregroundStyle: Color {
-        configuration.colorStyle.color(isFocused: isFocused, theme: theme)
+    private var textColor: Color {
+        configuration.colorStyle.color(isFocused: isFocused, theme: .light)
     }
 
     private var kerning: CGFloat {
@@ -81,8 +105,26 @@ public struct PixelText: View {
         pixelFont.textCase
     }
 
-    private var visibilityCondition: Bool {
-        (pixelFont as? PixelFont) == PixelFont.empty
+    private var visibility: Visibility {
+        pixelFont == .empty ? .remove : .show
+    }
+}
+
+private extension EnvironmentValues {
+
+    @Entry var kerning: CGFloat = 0
+    @Entry var textColor: Color = .clear
+}
+
+extension EnvironmentValues {
+
+    @Entry var visibility: Visibility = .show
+}
+
+private extension View {
+
+    func textColor(_ textColor: Color) -> some View {
+        self.environment(\.textColor, textColor)
     }
 }
 

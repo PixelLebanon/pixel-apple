@@ -10,6 +10,8 @@ import SwiftUI
 
 public struct PixelColor {
 
+    public static let empty: Self = .init(.clear)
+
     public let color: Color
     public let uiColor: UIColor
 

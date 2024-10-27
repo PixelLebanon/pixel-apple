@@ -1,5 +1,5 @@
 //
-//  PixelFontStyle+PixelFont.swift
+//  PixelFontStyle+AnyPixelFont.swift
 //  Pixel
 //
 //  Created by Khaled Chehabeddine on 01/09/2024.
@@ -10,32 +10,27 @@ import Foundation
 
 public extension PixelFontStyle {
 
-    /// A computed property to retrieve the `FontProtocol` concrete value of a `solid` font style. Any other font style
-    /// will default to `PixelFont.empty`.
-    var pixelFont: any PixelFontProtocol {
+    var pixelFont: AnyPixelFont {
         switch self {
         case let .solid(pixelFont): pixelFont
-        default: PixelFont.empty
+        default: .empty
         }
     }
 
-    /// A method to retrieve the `FontProtocol` concrete value of a `solid` or `themed` font style. Any other
-    /// font style will default to `PixelFont.empty`.
-    func pixelFont(theme: Theme) -> any PixelFontProtocol {
+    func pixelFont(theme: PixelTheme) -> AnyPixelFont {
         switch self {
         case let .solid(pixelFont): pixelFont
-        case let .themed(pixelFonts): pixelFonts[theme] ?? PixelFont.empty
-        default: PixelFont.empty
+        case let .themed(pixelFonts): pixelFonts[theme] ?? .empty
+        default: .empty
         }
     }
 
-    /// A method to retrieve the `FontProtocol` concrete value of any font style.
-    func pixelFont(isFocused: Bool, theme: Theme) -> any PixelFontProtocol {
+    func pixelFont(isFocused: Bool, theme: PixelTheme) -> AnyPixelFont {
         switch self {
         case let .solid(pixelFont):
             return pixelFont
         case let .themed(pixelFonts):
-            return pixelFonts[theme] ?? PixelFont.empty
+            return pixelFonts[theme] ?? .empty
         case let .conditional(activeFontStyle, inactiveFontStyle, condition):
             let isActive: Bool = switch condition {
             case .focus: isFocused

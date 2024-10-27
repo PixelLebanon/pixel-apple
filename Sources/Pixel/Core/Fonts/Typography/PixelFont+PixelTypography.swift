@@ -10,7 +10,7 @@ import Foundation
 
 // swiftlint:disable no_magic_numbers
 
-private extension PixelFont {
+private extension SFProPixelFont {
 
     private static let boldFont: String = SFPro.bold.name
     private static let mediumFont: String = SFPro.medium.name
@@ -59,36 +59,36 @@ private extension PixelFont {
 public extension PixelTypography {
 
     static let sfPro: Self = .init(
-        superDino1: .init(PixelFont.superDino1),
-        superDino2: .init(PixelFont.superDino2),
-        superDino3: .init(PixelFont.superDino3),
-        superDino4: .init(PixelFont.superDino4),
-        capsSuperDino: .init(PixelFont.capsSuperDino),
-        dino1: .init(PixelFont.dino1),
-        dino2: .init(PixelFont.dino2),
-        dino3: .init(PixelFont.dino3),
-        dino4: .init(PixelFont.superDino1),
-        capsDino: .init(PixelFont.capsDino),
-        big1: .init(PixelFont.big1),
-        big2: .init(PixelFont.big2),
-        big3: .init(PixelFont.big3),
-        big4: .init(PixelFont.big4),
-        capsBig: .init(PixelFont.capsBig),
-        medium1: .init(PixelFont.medium1),
-        medium2: .init(PixelFont.medium2),
-        medium3: .init(PixelFont.medium3),
-        medium4: .init(PixelFont.medium4),
-        capsMedium: .init(PixelFont.capsMedium),
-        small1: .init(PixelFont.small1),
-        small2: .init(PixelFont.small2),
-        small3: .init(PixelFont.small3),
-        small4: .init(PixelFont.small4),
-        capsSmall: .init(PixelFont.capsSmall),
-        superSmall1: .init(PixelFont.superSmall1),
-        superSmall2: .init(PixelFont.superSmall2),
-        superSmall3: .init(PixelFont.superSmall3),
-        superSmall4: .init(PixelFont.superSmall4),
-        capsSuperSmall: .init(PixelFont.capsSuperSmall)
+        superDino1: .init(SFProPixelFont.superDino1),
+        superDino2: .init(SFProPixelFont.superDino2),
+        superDino3: .init(SFProPixelFont.superDino3),
+        superDino4: .init(SFProPixelFont.superDino4),
+        capsSuperDino: .init(SFProPixelFont.capsSuperDino),
+        dino1: .init(SFProPixelFont.dino1),
+        dino2: .init(SFProPixelFont.dino2),
+        dino3: .init(SFProPixelFont.dino3),
+        dino4: .init(SFProPixelFont.superDino1),
+        capsDino: .init(SFProPixelFont.capsDino),
+        big1: .init(SFProPixelFont.big1),
+        big2: .init(SFProPixelFont.big2),
+        big3: .init(SFProPixelFont.big3),
+        big4: .init(SFProPixelFont.big4),
+        capsBig: .init(SFProPixelFont.capsBig),
+        medium1: .init(SFProPixelFont.medium1),
+        medium2: .init(SFProPixelFont.medium2),
+        medium3: .init(SFProPixelFont.medium3),
+        medium4: .init(SFProPixelFont.medium4),
+        capsMedium: .init(SFProPixelFont.capsMedium),
+        small1: .init(SFProPixelFont.small1),
+        small2: .init(SFProPixelFont.small2),
+        small3: .init(SFProPixelFont.small3),
+        small4: .init(SFProPixelFont.small4),
+        capsSmall: .init(SFProPixelFont.capsSmall),
+        superSmall1: .init(SFProPixelFont.superSmall1),
+        superSmall2: .init(SFProPixelFont.superSmall2),
+        superSmall3: .init(SFProPixelFont.superSmall3),
+        superSmall4: .init(SFProPixelFont.superSmall4),
+        capsSuperSmall: .init(SFProPixelFont.capsSuperSmall)
     )
 
     static let empty: Self = .init(

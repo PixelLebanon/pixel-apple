@@ -8,11 +8,9 @@
 
 import SwiftUI
 
-public struct AnyPixelFont: PixelFontProtocol {
+public struct AnyPixelFont: PixelFont {
 
-    public static var empty: AnyPixelFont {
-        .init()
-    }
+    public static let empty: AnyPixelFont = .init()
 
     private let _kerning: CGFloat
     private let _name: String
@@ -23,7 +21,7 @@ public struct AnyPixelFont: PixelFontProtocol {
     private let _font: Font
     private let _uiFont: UIFont
 
-    public init<T: PixelFontProtocol>(_ font: T) {
+    public init<T: PixelFont>(_ font: T) {
         self._kerning = font.kerning
         self._name = font.name
         self._size = font.size
@@ -40,6 +38,7 @@ public struct AnyPixelFont: PixelFontProtocol {
         self._style = .body
         self._textCase = nil
         self._font = .custom("", size: 0)
+        // swiftlint:disable:next force_unwrapping
         self._uiFont = .init(name: "", size: 0)!
     }
 
