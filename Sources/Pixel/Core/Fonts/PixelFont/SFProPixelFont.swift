@@ -22,8 +22,7 @@ public struct SFProPixelFont: PixelFont {
         .custom(name, size: size, relativeTo: style)
     }
 
-    public var uiFont: UIFont {
-        // swiftlint:disable:next force_unwrapping
-        .init(name: name, size: size)!
+    public var uiFont: UIFont? {
+        .init(name: name, size: size)
     }
 }

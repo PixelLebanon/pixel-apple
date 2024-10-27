@@ -17,12 +17,8 @@ enum Visibility {
 
 extension View {
 
-    func visibility(_ visibility: Visibility) -> some View {
-        self.environment(\.visibility, visibility)
-    }
-
     @ViewBuilder
-    func visibility(is visibility: Visibility) -> some View {
+    func visibility(_ visibility: Visibility) -> some View {
         if case .show = visibility {
             self
         } else if case .hidden = visibility {

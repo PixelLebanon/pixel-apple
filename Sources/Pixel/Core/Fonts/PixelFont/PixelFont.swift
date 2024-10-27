@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public protocol PixelFont: Equatable {
+public protocol PixelFont: Equatable, Sendable {
 
     static var empty: Self { get }
 
@@ -19,5 +19,5 @@ public protocol PixelFont: Equatable {
     var textCase: Text.Case? { get }
 
     var font: Font { get }
-    var uiFont: UIFont { get }
+    var uiFont: UIFont? { get }
 }

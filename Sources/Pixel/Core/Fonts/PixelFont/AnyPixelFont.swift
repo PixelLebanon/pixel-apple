@@ -19,7 +19,7 @@ public struct AnyPixelFont: PixelFont {
     private let _textCase: Text.Case?
 
     private let _font: Font
-    private let _uiFont: UIFont
+    private let _uiFont: UIFont?
 
     public init<T: PixelFont>(_ font: T) {
         self._kerning = font.kerning
@@ -38,8 +38,7 @@ public struct AnyPixelFont: PixelFont {
         self._style = .body
         self._textCase = nil
         self._font = .custom("", size: 0)
-        // swiftlint:disable:next force_unwrapping
-        self._uiFont = .init(name: "", size: 0)!
+        self._uiFont = .init(name: "", size: 0)
     }
 
     public var kerning: CGFloat {
@@ -66,7 +65,7 @@ public struct AnyPixelFont: PixelFont {
         _font
     }
 
-    public var uiFont: UIFont {
+    public var uiFont: UIFont? {
         _uiFont
     }
 }

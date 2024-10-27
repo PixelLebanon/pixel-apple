@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct PixelTypography {
+public struct PixelTypography: Sendable {
 
     public let superDino1: AnyPixelFont
     public let superDino2: AnyPixelFont
