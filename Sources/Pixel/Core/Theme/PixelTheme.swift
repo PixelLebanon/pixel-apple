@@ -8,53 +8,36 @@
 
 import UIKit
 
-/// An enum defining the themes currently supported in the Pixel design system by default.
-///
-/// The enum conforms to `PixelThemeProtocol` to instantly provide Pixel components with default color and font values,
-/// and `Codable` to cache the latest theme change in `UserDefaults` and persist past the app instance's lifecycle.
-public enum PixelTheme: PixelThemeProtocol, Codable {
+public enum PixelTheme: Codable {
 
-    /// The light theme value.
-    case light
-    /// The dark theme value.
-    case dark
+    public struct Model: Codable {
 
-    /// The default theme value, determined by the user's pereferences. If not previously set, defaults to the system's
-    /// current interface style.
-    @PixelUserDefaultsActor public static var defaultValue: Self {
-        UserDefaults.standard.pixelTheme ?? .init(UITraitCollection.current.userInterfaceStyle)
-    }
+        public let colorScheme: PixelColorScheme
+        public let typography: PixelTypography
 
-    /// Initialize a `PixelTheme` based on the current `UIUserInterfaceStyle` value.
-    private init(_ userInterfaceStyle: UIUserInterfaceStyle) {
-        switch userInterfaceStyle {
-        case .light: self = .light
-        case .dark: self = .dark
-        default: self = .light
+        public init(colorScheme: PixelColorScheme, typography: PixelTypography) {
+            self.colorScheme = colorScheme
+            self.typography = typography
         }
     }
 
-    /// The color scheme associated with the theme.
-    ///
-    /// Currently mapped as follows:
-    /// - `light`: Returns the color scheme `Pixel.Light`.
-    /// - `dark`: Returns the color scheme `Pixel.Dark`.
-    public var colorScheme: any PixelColorScheme.Type {
+    case light(Model = .init(colorScheme: Pixel.Light.self, typography: PixelFont.self))
+    case dark(Model = .init(colorScheme: .dark, typography: PixelFont.self))
+    case custom(Model)
+
+    public var colorScheme: PixelColorScheme {
         switch self {
-        case .light: Pixel.Light.self
-        case .dark: Pixel.Dark.self
+        case let .light(model),
+             let .dark(model),
+             let .custom(model): model.colorScheme
         }
     }
 
-    /// The typography associated with the theme.
-    ///
-    /// Currently mapped as follows:
-    /// - `light`: Returns the Pixel font typography `PixelFont`.
-    /// - `dark`: Returns the Pixel font typography `PixelFont`.
-    public var typography: any PixelTypography.Type {
+    public var typography: PixelTypography {
         switch self {
-        case .light: PixelFont.self
-        case .dark: PixelFont.self
+        case let .light(model),
+             let .dark(model),
+             let .custom(model): model.typography
         }
     }
 }

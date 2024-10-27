@@ -8,80 +8,41 @@
 
 import Foundation
 
-/// A type that defines the typography used in the Pixel design system.
-///
-/// `PixelTypography` standardizes the roles of fonts, allowing Pixel to easily adapt to custom themes defined by
-/// clients when dealing with text-sensitive content.
-///
-/// Conforming to this protocol would help improve font accessibility and consistency throughout your app.
-public protocol PixelTypography {
+public struct PixelTypography: Codable {
 
-    /// The `PixelFontProtocol` implementation associated with this typography.
-    associatedtype FontProtocol: PixelFontProtocol
+    public let superDino1: AnyPixelFont
+    public let superDino2: AnyPixelFont
+    public let superDino3: AnyPixelFont
+    public let superDino4: AnyPixelFont
+    public let capsSuperDino: AnyPixelFont
 
-    /// The large Super Dino category font.
-    static var superDino1: FontProtocol { get }
-    /// The medium Super Dino category font.
-    static var superDino2: FontProtocol { get }
-    /// The small Super Dino category font.
-    static var superDino3: FontProtocol { get }
-    /// The slightly smaller or lighter font weight Super Dino category font.
-    static var superDino4: FontProtocol { get }
-    /// The all-caps Super Dino category font.
-    static var capsSuperDino: FontProtocol { get }
+    public let dino1: AnyPixelFont
+    public let dino2: AnyPixelFont
+    public let dino3: AnyPixelFont
+    public let dino4: AnyPixelFont
+    public let capsDino: AnyPixelFont
 
-    /// The large Dino category font.
-    static var dino1: FontProtocol { get }
-    /// The medium Dino category font.
-    static var dino2: FontProtocol { get }
-    /// The small Dino category font.
-    static var dino3: FontProtocol { get }
-    /// The slightly smaller or lighter font weight Dino category font.
-    static var dino4: FontProtocol { get }
-    /// The all-caps Dino category font.
-    static var capsDino: FontProtocol { get }
+    public let big1: AnyPixelFont
+    public let big2: AnyPixelFont
+    public let big3: AnyPixelFont
+    public let big4: AnyPixelFont
+    public let capsBig: AnyPixelFont
 
-    /// The large Big category font.
-    static var big1: FontProtocol { get }
-    /// The medium Big category font.
-    static var big2: FontProtocol { get }
-    /// The small Big category font.
-    static var big3: FontProtocol { get }
-    /// The slightly smaller or lighter font weight Big category font.
-    static var big4: FontProtocol { get }
-    /// The all-caps Big category font.
-    static var capsBig: FontProtocol { get }
+    public let medium1: AnyPixelFont
+    public let medium2: AnyPixelFont
+    public let medium3: AnyPixelFont
+    public let medium4: AnyPixelFont
+    public let capsMedium: AnyPixelFont
 
-    /// The large Medium category font.
-    static var medium1: FontProtocol { get }
-    /// The medium Medium category font.
-    static var medium2: FontProtocol { get }
-    /// The small Medium category font.
-    static var medium3: FontProtocol { get }
-    /// The slightly smaller or lighter font weight Medium category font.
-    static var medium4: FontProtocol { get }
-    /// The all-caps Medium category font.
-    static var capsMedium: FontProtocol { get }
+    public let small1: AnyPixelFont
+    public let small2: AnyPixelFont
+    public let small3: AnyPixelFont
+    public let small4: AnyPixelFont
+    public let capsSmall: AnyPixelFont
 
-    /// The large Small category font.
-    static var small1: FontProtocol { get }
-    /// The medium Small category font.
-    static var small2: FontProtocol { get }
-    /// The small Small category font.
-    static var small3: FontProtocol { get }
-    /// The slightly smaller or lighter font weight Small category font.
-    static var small4: FontProtocol { get }
-    /// The all-caps Small category font.
-    static var capsSmall: FontProtocol { get }
-
-    /// The large Super Small category font.
-    static var superSmall1: FontProtocol { get }
-    /// The medium Super Small category font.
-    static var superSmall2: FontProtocol { get }
-    /// The small Super Small category font.
-    static var superSmall3: FontProtocol { get }
-    /// The slightly smaller or lighter font weight Super Small category font.
-    static var superSmall4: FontProtocol { get }
-    /// The all-caps Super Small category font.
-    static var capsSuperSmall: FontProtocol { get }
+    public let superSmall1: AnyPixelFont
+    public let superSmall2: AnyPixelFont
+    public let superSmall3: AnyPixelFont
+    public let superSmall4: AnyPixelFont
+    public let capsSuperSmall: AnyPixelFont
 }
