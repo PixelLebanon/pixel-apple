@@ -31,8 +31,8 @@ public extension UserDefaults {
             do {
                 return try Self.decoder.decode(PixelTheme.self, from: data)
             } catch {
-                print("UserDefaults+PixelKeys: Could not decode PixelTheme, returning default value.")
-                return .defaultValue
+                print("UserDefaults+PixelKeys: Could not decode PixelTheme, returning nil.")
+                return nil
             }
         }
         set {

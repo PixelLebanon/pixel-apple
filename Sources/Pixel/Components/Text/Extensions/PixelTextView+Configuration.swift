@@ -9,7 +9,7 @@
 import Observation
 import SwiftUI
 
-public extension PixelTextView {
+public extension PixelText {
 
     /// A configuration type to customize the appearance and behavior of a `PixelTextView`.
     ///

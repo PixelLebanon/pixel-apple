@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public protocol PixelFontProtocol: Codable, Equatable {
+public protocol PixelFontProtocol: Equatable {
 
     static var empty: Self { get }
 
@@ -20,11 +20,4 @@ public protocol PixelFontProtocol: Codable, Equatable {
 
     var font: Font { get }
     var uiFont: UIFont { get }
-}
-
-public extension PixelFontProtocol {
-
-    var eraseToAnyPixelFont: AnyPixelFont {
-        .init(self)
-    }
 }

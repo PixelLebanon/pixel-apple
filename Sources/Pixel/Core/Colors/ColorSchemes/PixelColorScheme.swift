@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct PixelColorScheme: Codable {
+public struct PixelColorScheme {
 
     public let primary: PixelColor
     public let onPrimary: PixelColor

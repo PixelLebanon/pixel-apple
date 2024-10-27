@@ -6,38 +6,21 @@
 //  Copyright © 2024 Pixel. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-public enum PixelTheme: Codable {
+public enum PixelTheme: CaseIterable, Codable {
 
-    public struct Model: Codable {
-
-        public let colorScheme: PixelColorScheme
-        public let typography: PixelTypography
-
-        public init(colorScheme: PixelColorScheme, typography: PixelTypography) {
-            self.colorScheme = colorScheme
-            self.typography = typography
-        }
-    }
-
-    case light(Model = .init(colorScheme: Pixel.Light.self, typography: PixelFont.self))
-    case dark(Model = .init(colorScheme: .dark, typography: PixelFont.self))
-    case custom(Model)
+    case light
+    case dark
 
     public var colorScheme: PixelColorScheme {
         switch self {
-        case let .light(model),
-             let .dark(model),
-             let .custom(model): model.colorScheme
+        case .light: .light
+        case .dark: .dark
         }
     }
 
     public var typography: PixelTypography {
-        switch self {
-        case let .light(model),
-             let .dark(model),
-             let .custom(model): model.typography
-        }
+        .sfPro
     }
 }

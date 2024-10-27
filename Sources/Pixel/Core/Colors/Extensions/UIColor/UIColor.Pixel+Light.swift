@@ -10,55 +10,32 @@ import UIKit
 
 public extension UIColor.Pixel {
 
-    /// A shortcut to the `Pixel.Light` color scheme implementation to access the set of colors in a UIKit context.
-    ///
-    /// Each color is of type `UIColor` to allow instant resolution to a UIKit color concrete value.
     enum Light {
 
-        /// The shortcut to the primary color of the `Pixel.Light` color scheme.
-        public static let primary: UIColor = Pixel.Light.primary.uiColor
-        /// The shortcut to the onPrimary color of the `Pixel.Light` color scheme.
-        public static let onPrimary: UIColor = Pixel.Light.onPrimary.uiColor
+        public static let primary: UIColor = PixelColorScheme.light.primary.uiColor
+        public static let onPrimary: UIColor = PixelColorScheme.light.onPrimary.uiColor
 
-        /// The shortcut to the secondary color of the `Pixel.Light` color scheme.
-        public static let secondary: UIColor = Pixel.Light.secondary.uiColor
-        /// The shortcut to the onSecondary color of the `Pixel.Light` color scheme.
-        public static let onSecondary: UIColor = Pixel.Light.onSecondary.uiColor
+        public static let secondary: UIColor = PixelColorScheme.light.secondary.uiColor
+        public static let onSecondary: UIColor = PixelColorScheme.light.onSecondary.uiColor
 
-        /// The shortcut to the accent color of the `Pixel.Light` color scheme.
-        public static let accent: UIColor = Pixel.Light.accent.uiColor
-        /// The shortcut to the onAccent color of the `Pixel.Light` color scheme.
-        public static let onAccent: UIColor = Pixel.Light.onAccent.uiColor
+        public static let accent: UIColor = PixelColorScheme.light.accent.uiColor
+        public static let onAccent: UIColor = PixelColorScheme.light.onAccent.uiColor
 
-        /// The shortcut to the neutral color of the `Pixel.Light` color scheme.
-        public static let neutral: UIColor = Pixel.Light.neutral.uiColor
-        /// The shortcut to the onNeutral color of the `Pixel.Light` color scheme.
-        public static let onNeutral: UIColor = Pixel.Light.onNeutral.uiColor
+        public static let neutral: UIColor = PixelColorScheme.light.neutral.uiColor
+        public static let onNeutral: UIColor = PixelColorScheme.light.onNeutral.uiColor
 
-        /// The shortcut to the background100 color of the `Pixel.Light` color scheme.
-        public static let background100: UIColor = Pixel.Light.background100.uiColor
-        /// The shortcut to the background200 color of the `Pixel.Light` color scheme.
-        public static let background200: UIColor = Pixel.Light.background200.uiColor
-        /// The shortcut to the background300 color of the `Pixel.Light` color scheme.
-        public static let background300: UIColor = Pixel.Light.background300.uiColor
-        /// The shortcut to the onBackground color of the `Pixel.Light` color scheme.
-        public static let onBackground: UIColor = Pixel.Light.onBackground.uiColor
+        public static let background100: UIColor = PixelColorScheme.light.background100.uiColor
+        public static let background200: UIColor = PixelColorScheme.light.background200.uiColor
+        public static let background300: UIColor = PixelColorScheme.light.background300.uiColor
+        public static let onBackground: UIColor = PixelColorScheme.light.onBackground.uiColor
 
-        /// The shortcut to the info color of the `Pixel.Light` color scheme.
-        public static let info: UIColor = Pixel.Light.info.uiColor
-        /// The shortcut to the onInfo color of the `Pixel.Light` color scheme.
-        public static let onInfo: UIColor = Pixel.Light.onInfo.uiColor
-        /// The shortcut to the error color of the `Pixel.Light` color scheme.
-        public static let error: UIColor = Pixel.Light.error.uiColor
-        /// The shortcut to the onError color of the `Pixel.Light` color scheme.
-        public static let onError: UIColor = Pixel.Light.onError.uiColor
-        /// The shortcut to the warning color of the `Pixel.Light` color scheme.
-        public static let warning: UIColor = Pixel.Light.warning.uiColor
-        /// The shortcut to the onWarning color of the `Pixel.Light` color scheme.
-        public static let onWarning: UIColor = Pixel.Light.onWarning.uiColor
-        /// The shortcut to the success color of the `Pixel.Light` color scheme.
-        public static let success: UIColor = Pixel.Light.success.uiColor
-        /// The shortcut to the onSuccess color of the `Pixel.Light` color scheme.
-        public static let onSuccess: UIColor = Pixel.Light.onSuccess.uiColor
+        public static let info: UIColor = PixelColorScheme.light.info.uiColor
+        public static let onInfo: UIColor = PixelColorScheme.light.onInfo.uiColor
+        public static let error: UIColor = PixelColorScheme.light.error.uiColor
+        public static let onError: UIColor = PixelColorScheme.light.onError.uiColor
+        public static let warning: UIColor = PixelColorScheme.light.warning.uiColor
+        public static let onWarning: UIColor = PixelColorScheme.light.onWarning.uiColor
+        public static let success: UIColor = PixelColorScheme.light.success.uiColor
+        public static let onSuccess: UIColor = PixelColorScheme.light.onSuccess.uiColor
     }
 }

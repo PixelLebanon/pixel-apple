@@ -8,7 +8,5 @@
 
 import Foundation
 
-/// An enum namespace to prevent name conflicts with native or third party frameworks and encapsulate features and
-/// specs exclusive to Pixel.
 public enum Pixel {
 }

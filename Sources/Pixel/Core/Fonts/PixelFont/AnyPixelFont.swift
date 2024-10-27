@@ -14,14 +14,14 @@ public struct AnyPixelFont: PixelFontProtocol {
         .init()
     }
 
-    public let _kerning: CGFloat
-    public let _name: String
-    public let _size: CGFloat
-    public let _style: Font.TextStyle
-    public let _textCase: Text.Case?
+    private let _kerning: CGFloat
+    private let _name: String
+    private let _size: CGFloat
+    private let _style: Font.TextStyle
+    private let _textCase: Text.Case?
 
-    public let _font: Font
-    public let _uiFont: UIFont
+    private let _font: Font
+    private let _uiFont: UIFont
 
     public init<T: PixelFontProtocol>(_ font: T) {
         self._kerning = font.kerning
