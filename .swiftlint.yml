@@ -138,6 +138,9 @@ file_header:
                     \/\/  Copyright © \d{4} Pixel\. All rights reserved\.
                     \/\/
 
+identifier_name:
+    excluded: ['_\w+$']
+
 large_tuple: 3
 
 nesting:

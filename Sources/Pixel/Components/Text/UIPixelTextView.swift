@@ -8,36 +8,31 @@
 
 import SwiftUI
 
-/// A view displaying a UIKit styled text from the Pixel Design System.
-///
-/// The view can be initialized either explicitly or implicitly depending on the app usecase.
-//public class UIPixelTextView: UIView {
-//
-//    /// The UIView hosting the `PixelTextView` by wrapping it around a `UIHostingConfiguration`.
-//    private lazy var view: UIView = {
-//        let view: UIView = UIHostingConfiguration {
-//            PixelTextView(configuration: configuration)
-//                .environment(themeManager)
-//        }
-//        .makeContentView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
-//
-//    /// The configuration object observing the view's current styling properties.
-//    public let configuration: PixelTextView<Theme>.Configuration
-//
-//    /// The theme manager of the view.
-//    private let themeManager: PixelThemeManager<Theme>
-//
-//    /// Initialize the view implicitly.
+public class UIPixelText: UIView {
+
+    private lazy var view: UIView = {
+        let view: UIView = UIHostingConfiguration {
+//            if let text: String = configuration.text {
+//                PixelText(text)
+//                    .configuration(configuration)
+//            }
+        }
+        .makeContentView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    public let configuration: PixelText.Configuration
+
+    private let theme: PixelTheme
+
 //    public init(
 //        alignment: TextAlignment? = nil,
-//        colorStyle: PixelColorStyle<Theme>? = nil,
-//        fontStyle: PixelFontStyle<Theme>? = nil,
+//        colorStyle: PixelColorStyle? = nil,
+//        fontStyle: PixelFontStyle? = nil,
 //        lineLimit: Int? = nil,
 //        text: String,
-//        themeManager: PixelThemeManager<Theme>
+//        theme: PixelTheme
 //    ) {
 //        self.configuration = .init(
 //            alignment: alignment,
@@ -52,56 +47,52 @@ import SwiftUI
 //
 //        setup()
 //    }
-//
-//    /// Initialize the view explicitly.
-//    public init(
-//        configuration: PixelTextView<Theme>.Configuration,
-//        themeManager: PixelThemeManager<Theme>
-//    ) {
-//        self.configuration = configuration
-//        self.themeManager = themeManager
-//
-//        super.init(frame: .zero)
-//
-//        setup()
-//    }
-//
-//    /// Required initializer for `NSCoder`. Not implemented.
-//    @available(*, unavailable)
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
-//    /// Create the view heirarchy and call all helper functions to set up the view.
-//    private func setup() {
-//        addSubview(view)
-//
-//        layout()
-//    }
-//
-//    /// Layout the view by bounding it to the edges of the parent `UIView` frame.
-//    private func layout() {
-//        NSLayoutConstraint.activate([
-//            view.topAnchor.constraint(equalTo: self.topAnchor),
-//            view.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-//            view.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-//            view.leadingAnchor.constraint(equalTo: self.leadingAnchor)
-//        ])
-//    }
-//}
-//
-//#Preview("Implicit") {
-//    UIPixelText(text: "Hello World", themeManager: PixelThemeManager())
-//}
-//
-//#Preview("Explicit") {
-//    UIPixelText(
-//        configuration: .init(
-//            alignment: .center,
-//            colorStyle: .solid(Pixel.Dark.onBackground),
-//            fontStyle: .solid(PixelFont.superDino1),
-//            text: "Hello World"
-//        ),
-//        themeManager: PixelThemeManager()
-//    )
-//}
+
+    public init(
+        configuration: PixelText.Configuration,
+        theme: PixelTheme
+    ) {
+        self.configuration = configuration
+        self.theme = theme
+
+        super.init(frame: .zero)
+
+        setup()
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setup() {
+        addSubview(view)
+
+        layout()
+    }
+
+    private func layout() {
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: self.topAnchor),
+            view.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            view.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            view.leadingAnchor.constraint(equalTo: self.leadingAnchor)
+        ])
+    }
+}
+
+#Preview("Implicit") {
+    EmptyView()
+}
+
+#Preview("Explicit") {
+    UIPixelText(
+        configuration: .init(
+//            text: "Hello World",
+            alignment: .center,
+            colorStyle: .solid(PixelColorScheme.light.onBackground),
+            fontStyle: .solid(PixelTypography.sfPro.superDino1)
+        ),
+        theme: .light
+    )
+}

@@ -10,14 +10,45 @@ import SwiftUI
 
 public struct PixelText: View {
 
-    @Environment(\.configuration) private var configuration: Configuration?
+    public struct Configuration {
+
+        public let alignment: TextAlignment
+        public let colorStyle: PixelColorStyle
+        public let fontStyle: PixelFontStyle
+        public let lineLimit: Int?
+
+        public init(
+            alignment: TextAlignment,
+            colorStyle: PixelColorStyle,
+            fontStyle: PixelFontStyle,
+            lineLimit: Int? = nil
+        ) {
+            self.alignment = alignment
+            self.colorStyle = colorStyle
+            self.fontStyle = fontStyle
+            self.lineLimit = lineLimit
+        }
+    }
+
     @Environment(\.isFocused) private var isFocused: Bool
     @Environment(\.pixelTheme) private var pixelTheme: PixelTheme
 
-    private let text: String
+    let text: String
+
+    let _alignment: TextAlignment?
+    let _colorStyle: PixelColorStyle?
+    let _fontStyle: PixelFontStyle?
+    let _lineLimit: Int?
+
+    let _configuration: Configuration?
 
     public init(_ text: String) {
         self.text = text
+        self._alignment = nil
+        self._colorStyle = nil
+        self._fontStyle = nil
+        self._lineLimit = nil
+        self._configuration = nil
     }
 
     public var body: some View {
@@ -31,22 +62,20 @@ public struct PixelText: View {
             .visibility(visibility)
     }
 
-    private var _pixelFont: AnyPixelFont {
-        pixelTheme.typography.big3
-    }
     private var pixelFont: AnyPixelFont {
-        configuration?.fontStyle.pixelFont(isFocused: isFocused, theme: pixelTheme) ?? _pixelFont
+        _configuration?.fontStyle(isFocused: isFocused, theme: pixelTheme)
+        ?? _fontStyle?(isFocused: isFocused, theme: pixelTheme)
+        ?? pixelTheme.typography.big3
     }
 
     private var font: Font {
         pixelFont.font
     }
 
-    private var _foregroundStyle: Color {
-        pixelTheme.colorScheme.onBackground.color
-    }
     private var foregroundStyle: Color {
-        configuration?.colorStyle.color(isFocused: isFocused, theme: pixelTheme) ?? _foregroundStyle
+        _configuration?.colorStyle(isFocused: isFocused, theme: pixelTheme)
+        ?? _colorStyle?(isFocused: isFocused, theme: pixelTheme)
+        ?? pixelTheme.colorScheme.onBackground.color
     }
 
     private var kerning: CGFloat {
@@ -54,11 +83,11 @@ public struct PixelText: View {
     }
 
     private var lineLimit: Int? {
-        configuration?.lineLimit
+        _configuration?.lineLimit ?? _lineLimit
     }
 
     private var multilineTextAlignment: TextAlignment {
-        configuration?.alignment ?? .center
+        _configuration?.alignment ?? _alignment ?? .center
     }
 
     private var textCase: Text.Case? {
@@ -67,18 +96,6 @@ public struct PixelText: View {
 
     private var visibility: Visibility {
         pixelFont == .empty ? .remove : .show
-    }
-}
-
-private extension EnvironmentValues {
-
-    @Entry var configuration: PixelText.Configuration?
-}
-
-public extension View where Self == PixelText {
-
-    func configuration(_ configuration: Self.Configuration) -> some View {
-        self.environment(\.configuration, configuration)
     }
 }
 
