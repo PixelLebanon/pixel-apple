@@ -2,15 +2,13 @@
 //  PixelFont.swift
 //  Pixel
 //
-//  Created by Khaled Chehabeddine on 27/05/2024.
+//  Created by Khaled Chehabeddine on 18/05/2024.
 //  Copyright © 2024 Pixel. All rights reserved.
 //
 
 import SwiftUI
 
-public protocol PixelFont: Equatable, Sendable {
-
-    static var empty: Self { get }
+public protocol PixelFont: Hashable, Sendable {
 
     var kerning: CGFloat { get }
     var name: String { get }

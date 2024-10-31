@@ -10,8 +10,6 @@ import Foundation
 
 public extension CGFloat {
 
-    /// A nested enum namespace to prevent name conflicts with native or third party frameworks and encapsulate Pixel
-    /// `CGFloat` definitions.
     enum Pixel {
     }
 }

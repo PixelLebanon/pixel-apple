@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct PixelColorScheme: Sendable {
+public struct PixelColorScheme: Hashable, Sendable {
 
     public let primary: PixelColor
     public let onPrimary: PixelColor

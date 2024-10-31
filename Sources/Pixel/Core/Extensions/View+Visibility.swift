@@ -10,7 +10,7 @@ import SwiftUI
 
 enum Visibility {
 
-    case show
+    case `default`
     case hidden
     case remove
 }
@@ -19,7 +19,7 @@ extension View {
 
     @ViewBuilder
     func visibility(_ visibility: Visibility) -> some View {
-        if case .show = visibility {
+        if case .default = visibility {
             self
         } else if case .hidden = visibility {
             self.hidden()

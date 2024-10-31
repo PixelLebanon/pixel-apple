@@ -10,8 +10,6 @@ import SwiftUI
 
 public struct SFProPixelFont: PixelFont {
 
-    public static let empty: Self = .init(name: "", size: 0, style: .body, textCase: nil)
-
     public let kerning: CGFloat = 0
     public let name: String
     public let size: CGFloat

@@ -17,6 +17,6 @@ public enum PixelFontStyle {
     }
 
     case solid(AnyPixelFont)
-    case themed(pixelFonts: [PixelTheme: AnyPixelFont])
+    case themed(pixelFonts: [AnyPixelTheme: AnyPixelFont])
     indirect case conditional(activeFontStyle: Self, inactiveFontStyle: Self, condition: Condition)
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum PixelTheme: CaseIterable, Codable {
+public enum PixelTheme: PixelThemeProtocol, CaseIterable {
 
     case light
     case dark

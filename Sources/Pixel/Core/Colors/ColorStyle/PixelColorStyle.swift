@@ -17,6 +17,6 @@ public enum PixelColorStyle {
     }
 
     case solid(PixelColor)
-    case themed(pixelColors: [PixelTheme: PixelColor])
+    case themed(pixelColors: [AnyPixelTheme: PixelColor])
     indirect case conditional(activeColorStyle: Self, inactiveColorStyle: Self, condition: Condition)
 }

@@ -10,12 +10,12 @@ import SwiftUI
 
 public extension EnvironmentValues {
 
-    @Entry var pixelTheme: PixelTheme = .light
+    @Entry var pixelTheme: AnyPixelTheme = PixelTheme.light.eraseToAnyPixelTheme
 }
 
 public extension View {
 
-    func pixelTheme(_ pixelTheme: PixelTheme) -> some View {
+    func pixelTheme(_ pixelTheme: AnyPixelTheme) -> some View {
         self.environment(\.pixelTheme, pixelTheme)
     }
 }

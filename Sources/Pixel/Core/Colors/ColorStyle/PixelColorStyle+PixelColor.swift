@@ -1,34 +1,34 @@
 //
-//  PixelColorStyle+UIColor.swift
+//  PixelColorStyle+PixelColor.swift
 //  Pixel
 //
 //  Created by Khaled Chehabeddine on 01/09/2024.
 //  Copyright © 2024 Pixel. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 public extension PixelColorStyle {
 
-    func callAsFunction() -> UIColor {
+    func callAsFunction() -> PixelColor {
         switch self {
-        case let .solid(pixelColor): pixelColor.uiColor
-        default: .clear
+        case let .solid(pixelColor): pixelColor
+        default: .empty
         }
     }
 
-    func callAsFunction(theme: PixelTheme) -> UIColor {
+    func callAsFunction(theme: AnyPixelTheme) -> PixelColor {
         switch self {
-        case let .solid(pixelColor): pixelColor.uiColor
-        case let .themed(pixelColors): pixelColors[theme]?.uiColor ?? .clear
-        default: .clear
+        case let .solid(pixelColor): pixelColor
+        case let .themed(pixelColors): pixelColors[theme] ?? .empty
+        default: .empty
         }
     }
 
-    func callAsFunction(isFocused: Bool, theme: PixelTheme) -> UIColor {
+    func callAsFunction(isFocused: Bool, theme: AnyPixelTheme) -> PixelColor {
         switch self {
-        case let .solid(pixelColor): return pixelColor.uiColor
-        case let .themed(pixelColors): return pixelColors[theme]?.uiColor ?? .clear
+        case let .solid(pixelColor): return pixelColor
+        case let .themed(pixelColors): return pixelColors[theme] ?? .empty
         case let .conditional(activeColorStyle, inactiveColorStyle, condition):
             let isActive: Bool = switch condition {
             case .focus: isFocused

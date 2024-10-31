@@ -31,7 +31,7 @@ public struct PixelText: View {
     }
 
     @Environment(\.isFocused) private var isFocused: Bool
-    @Environment(\.pixelTheme) private var pixelTheme: PixelTheme
+    @Environment(\.pixelTheme) private var pixelTheme: AnyPixelTheme
 
     let text: String
 
@@ -73,8 +73,8 @@ public struct PixelText: View {
     }
 
     private var foregroundStyle: Color {
-        _configuration?.colorStyle(isFocused: isFocused, theme: pixelTheme)
-        ?? _colorStyle?(isFocused: isFocused, theme: pixelTheme)
+        _configuration?.colorStyle(isFocused: isFocused, theme: pixelTheme).color
+        ?? _colorStyle?(isFocused: isFocused, theme: pixelTheme).color
         ?? pixelTheme.colorScheme.onBackground.color
     }
 
@@ -95,7 +95,7 @@ public struct PixelText: View {
     }
 
     private var visibility: Visibility {
-        pixelFont == .empty ? .remove : .show
+        pixelFont == .empty ? .remove : .default
     }
 }
 
@@ -108,8 +108,8 @@ public struct PixelText: View {
         .configuration(
             .init(
                 alignment: .center,
-                colorStyle: .solid(PixelColorScheme.light.onBackground),
-                fontStyle: .solid(PixelTypography.sfPro.superDino1)
+                colorStyle: .solid(.lightColorScheme.onBackground),
+                fontStyle: .solid(.sfProTypography.superDino1)
             )
         )
 }

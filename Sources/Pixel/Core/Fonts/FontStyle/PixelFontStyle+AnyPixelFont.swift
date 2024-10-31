@@ -17,7 +17,7 @@ public extension PixelFontStyle {
         }
     }
 
-    func callAsFunction(theme: PixelTheme) -> AnyPixelFont {
+    func callAsFunction(theme: AnyPixelTheme) -> AnyPixelFont {
         switch self {
         case let .solid(pixelFont): pixelFont
         case let .themed(pixelFonts): pixelFonts[theme] ?? .empty
@@ -25,7 +25,7 @@ public extension PixelFontStyle {
         }
     }
 
-    func callAsFunction(isFocused: Bool, theme: PixelTheme) -> AnyPixelFont {
+    func callAsFunction(isFocused: Bool, theme: AnyPixelTheme) -> AnyPixelFont {
         switch self {
         case let .solid(pixelFont): return pixelFont
         case let .themed(pixelFonts): return pixelFonts[theme] ?? .empty

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public struct PixelColor: Sendable {
+public struct PixelColor: Hashable, Sendable {
 
     public static let empty: Self = .init(.clear)
 
