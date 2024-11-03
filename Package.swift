@@ -3,15 +3,10 @@
 @preconcurrency import PackageDescription
 
 let package: Package = .init(
-    name: .module,
+    name: .name,
     platforms: [.iOS(.v17)],
-    products: [
-        .pixel
-    ],
-    dependencies: [
-        // MARK: Plugins
-        .swiftLint
-    ],
+    products: [.pixel],
+    dependencies: [.swiftLint],
     targets: [
         .pixel,
         .pixelTest
@@ -30,10 +25,10 @@ private extension Product {
 
 private extension String {
 
-    // MARK: Module
-    static let module: Self = "Pixel"
+    // MARK: Package Name
+    static let name: Self = "Pixel"
 
-    // MARK: Submodules
+    // MARK: Modules
     static let pixel: Self = "Pixel"
 
     // MARK: Packages
@@ -55,7 +50,7 @@ private extension Target {
 
 private extension Target.Dependency {
 
-    // MARK: Submodules
+    // MARK: Modules
     static let pixel: Self = byName(name: .pixel)
 
     // MARK: Packages
