@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct AnyPixelFont: PixelFont {
 
-    public static let empty: AnyPixelFont = .init()
+    public static let empty: Self = .init()
 
     private let _kerning: CGFloat
     private let _name: String
@@ -21,7 +21,7 @@ public struct AnyPixelFont: PixelFont {
     private let _font: Font
     private let _uiFont: UIFont?
 
-    public init<T: PixelFont>(_ font: T) {
+    public init<F: PixelFont>(_ font: F) {
         self._kerning = font.kerning
         self._name = font.name
         self._size = font.size
