@@ -10,8 +10,6 @@ import UIKit
 
 public extension UIImage {
 
-    /// A nested enum namespace to prevent name conflicts with native or third party frameworks and encapsulate Pixel
-    /// `UIImage` definitions.
     enum Pixel {
     }
 }

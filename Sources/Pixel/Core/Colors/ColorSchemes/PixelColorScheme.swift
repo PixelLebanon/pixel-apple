@@ -8,57 +8,75 @@
 
 import Foundation
 
-/// A type that defines a color scheme used in the Pixel design system.
-///
-/// `PixelColorScheme` standardizes the roles of colors, allowing Pixel to easily adapt to custom themes defined by
-/// clients when dealing with contrast-sensitive content.
-///
-/// Conforming to this protocol would help improve color accessibility and consistency throughout your app.
-public protocol PixelColorScheme {
+public struct PixelColorScheme: Hashable, Sendable {
 
-    /// The primary color used for prominent UI elements like buttons, links, or selected states.
-    static var primary: PixelColor { get }
-    /// The color used for text or icons displayed on top of the `primary` color.
-    static var onPrimary: PixelColor { get }
+    public let primary: PixelColor
+    public let onPrimary: PixelColor
 
-    /// The secondary color used for less prominent UI elements that complement the primary color.
-    static var secondary: PixelColor { get }
-    /// The color used for text or icons displayed on top of the `secondary` color.
-    static var onSecondary: PixelColor { get }
+    public let secondary: PixelColor
+    public let onSecondary: PixelColor
 
-    /// The accent color used for highlighting important UI elements.
-    static var accent: PixelColor { get }
-    /// The color used for text or icons displayed on top of the `accent` color.
-    static var onAccent: PixelColor { get }
+    public let accent: PixelColor
+    public let onAccent: PixelColor
 
-    /// The neutral color used for minimal visual impact UI elements.
-    static var neutral: PixelColor { get }
-    /// The color used for text or icons displayed on top of the `neutral` color.
-    static var onNeutral: PixelColor { get }
+    public let neutral: PixelColor
+    public let onNeutral: PixelColor
 
-    /// The lightest background color for backgrounds.
-    static var background100: PixelColor { get }
-    /// The medium-light background color for surfaces like cards or sheets.
-    static var background200: PixelColor { get }
-    /// The medium background color for more contrast surfaces that need more emphasis.
-    static var background300: PixelColor { get }
-    /// The color used for text or icons displayed on top of the background colors.
-    static var onBackground: PixelColor { get }
+    public let background100: PixelColor
+    public let background200: PixelColor
+    public let background300: PixelColor
+    public let onBackground: PixelColor
 
-    /// The color used to indicate informational messages or states.
-    static var info: PixelColor { get }
-    /// The color used for text or icons displayed on top of the `info` color.
-    static var onInfo: PixelColor { get }
-    /// The color used to indicate critical or error messages or states.
-    static var error: PixelColor { get }
-    /// The color used for text or icons displayed on top of the `error` color.
-    static var onError: PixelColor { get }
-    /// The color used to indicate cautionary or warning  messages or states.
-    static var warning: PixelColor { get }
-    /// The color used for text or icons displayed on top of the `warning` color.
-    static var onWarning: PixelColor { get }
-    /// The color used to indicate successful messages or states.
-    static var success: PixelColor { get }
-    /// The color used for text or icons displayed on top of the `success` color.
-    static var onSuccess: PixelColor { get }
+    public let info: PixelColor
+    public let onInfo: PixelColor
+    public let error: PixelColor
+    public let onError: PixelColor
+    public let warning: PixelColor
+    public let onWarning: PixelColor
+    public let success: PixelColor
+    public let onSuccess: PixelColor
+
+    public init(
+        primary: PixelColor,
+        onPrimary: PixelColor,
+        secondary: PixelColor,
+        onSecondary: PixelColor,
+        accent: PixelColor,
+        onAccent: PixelColor,
+        neutral: PixelColor,
+        onNeutral: PixelColor,
+        background100: PixelColor,
+        background200: PixelColor,
+        background300: PixelColor,
+        onBackground: PixelColor,
+        info: PixelColor,
+        onInfo: PixelColor,
+        error: PixelColor,
+        onError: PixelColor,
+        warning: PixelColor,
+        onWarning: PixelColor,
+        success: PixelColor,
+        onSuccess: PixelColor
+    ) {
+        self.primary = primary
+        self.onPrimary = onPrimary
+        self.secondary = secondary
+        self.onSecondary = onSecondary
+        self.accent = accent
+        self.onAccent = onAccent
+        self.neutral = neutral
+        self.onNeutral = onNeutral
+        self.background100 = background100
+        self.background200 = background200
+        self.background300 = background300
+        self.onBackground = onBackground
+        self.info = info
+        self.onInfo = onInfo
+        self.error = error
+        self.onError = onError
+        self.warning = warning
+        self.onWarning = onWarning
+        self.success = success
+        self.onSuccess = onSuccess
+    }
 }

@@ -8,26 +8,21 @@
 
 import SwiftUI
 
-/// A type defining the different visiblity states for a view.
 enum Visibility {
 
-    /// The view is hidden but still takes up space in the layout.
+    case `default`
     case hidden
-    /// The view is removed from the layout.
     case remove
 }
 
 extension View {
 
-    /// Sets the visibility of a view based on the condition.
     @ViewBuilder
-    func visibility(_ visibility: Visibility, condition: Bool) -> some View {
-        if condition {
-            if visibility == .hidden {
-                self.hidden()
-            }
-        } else {
+    func visibility(_ visibility: Visibility) -> some View {
+        if case .default = visibility {
             self
+        } else if case .hidden = visibility {
+            self.hidden()
         }
     }
 }

@@ -8,24 +8,18 @@
 
 import SwiftUI
 
-/// A representation of a color that adapts to a SwiftUI and UIKit context.
-///
-/// The Pixel design system depend on `PixelColor` to enable UI framework environment usecases when resolving a color
-/// to a concrete value.
-public struct PixelColor {
+public struct PixelColor: Hashable, Sendable {
 
-    /// A SwiftUI color concrete value.
+    public static let empty: Self = .init(.clear)
+
     public let color: Color
-    /// A UIKit color concrete value.
     public let uiColor: UIColor
 
-    /// Initialize the type with a `Color`.
     public init(_ color: Color) {
         self.color = color
         self.uiColor = .init(color)
     }
 
-    /// Initialize the type with a `ColorResource`.
     init(_ resource: ColorResource) {
         self.color = .init(resource)
         self.uiColor = .init(resource: resource)
