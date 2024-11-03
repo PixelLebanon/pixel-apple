@@ -15,4 +15,5 @@ jobs:
     - name: Check linked issue(s)
       uses: nearform-actions/github-action-check-linked-issues@v1
       with:
+        custom-body-comment: 'No linked issues found. Please link the corresponding issue(s) to the pull request under development.'
         exclude-labels: 'hotfix'
