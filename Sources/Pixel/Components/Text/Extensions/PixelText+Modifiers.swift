@@ -16,14 +16,14 @@ public extension PixelText {
         colorStyle: PixelColorStyle?,
         fontStyle: PixelFontStyle?,
         lineLimit: Int?,
-        configuration: Configuration?
+        lineSpacing: CGFloat?
     ) {
         self.text = text
         self._alignment = alignment
         self._colorStyle = colorStyle
         self._fontStyle = fontStyle
         self._lineLimit = lineLimit
-        self._configuration = configuration
+        self._lineSpacing = lineSpacing
     }
 
     func alignment(_ alignment: TextAlignment) -> Self {
@@ -33,7 +33,7 @@ public extension PixelText {
             colorStyle: _colorStyle,
             fontStyle: _fontStyle,
             lineLimit: _lineLimit,
-            configuration: _configuration
+            lineSpacing: _lineSpacing
         )
     }
 
@@ -44,7 +44,7 @@ public extension PixelText {
             colorStyle: colorStyle,
             fontStyle: _fontStyle,
             lineLimit: _lineLimit,
-            configuration: _configuration
+            lineSpacing: _lineSpacing
         )
     }
 
@@ -55,7 +55,7 @@ public extension PixelText {
             colorStyle: _colorStyle,
             fontStyle: fontStyle,
             lineLimit: _lineLimit,
-            configuration: _configuration
+            lineSpacing: _lineSpacing
         )
     }
 
@@ -66,18 +66,22 @@ public extension PixelText {
             colorStyle: _colorStyle,
             fontStyle: _fontStyle,
             lineLimit: lineLimit,
-            configuration: _configuration
+            lineSpacing: _lineSpacing
         )
     }
 
-    func configuration(_ configuration: Configuration) -> Self {
+    func lineSpacing(_ lineSpacing: CGFloat) -> Self {
         .init(
             text: text,
             alignment: _alignment,
             colorStyle: _colorStyle,
             fontStyle: _fontStyle,
             lineLimit: _lineLimit,
-            configuration: configuration
+            lineSpacing: lineSpacing
         )
+    }
+
+    func configure(_ properties: PixelTextProperties) -> some View {
+        self.environment(\.pixelTextProperties, properties)
     }
 }

@@ -10,28 +10,9 @@ import SwiftUI
 
 public struct PixelText: View {
 
-    public struct Configuration {
-
-        public let alignment: TextAlignment
-        public let colorStyle: PixelColorStyle
-        public let fontStyle: PixelFontStyle
-        public let lineLimit: Int?
-
-        public init(
-            alignment: TextAlignment,
-            colorStyle: PixelColorStyle,
-            fontStyle: PixelFontStyle,
-            lineLimit: Int? = nil
-        ) {
-            self.alignment = alignment
-            self.colorStyle = colorStyle
-            self.fontStyle = fontStyle
-            self.lineLimit = lineLimit
-        }
-    }
-
     @Environment(\.isFocused) private var isFocused: Bool
-    @Environment(\.pixelTheme) private var pixelTheme: AnyPixelTheme
+    @Environment(\.pixelTextProperties) private var properties: PixelTextProperties?
+    @Environment(\.pixelTheme) private var theme: AnyPixelTheme
 
     let text: String
 
@@ -39,8 +20,7 @@ public struct PixelText: View {
     let _colorStyle: PixelColorStyle?
     let _fontStyle: PixelFontStyle?
     let _lineLimit: Int?
-
-    let _configuration: Configuration?
+    let _lineSpacing: CGFloat?
 
     public init(_ text: String) {
         self.text = text
@@ -48,7 +28,7 @@ public struct PixelText: View {
         self._colorStyle = nil
         self._fontStyle = nil
         self._lineLimit = nil
-        self._configuration = nil
+        self._lineSpacing = nil
     }
 
     public var body: some View {
@@ -57,15 +37,16 @@ public struct PixelText: View {
             .foregroundStyle(foregroundStyle)
             .kerning(kerning)
             .lineLimit(lineLimit)
+            .lineSpacing(lineSpacing)
             .multilineTextAlignment(multilineTextAlignment)
             .textCase(textCase)
             .visibility(visibility)
     }
 
     private var pixelFont: AnyPixelFont {
-        _configuration?.fontStyle(isFocused: isFocused, theme: pixelTheme)
-        ?? _fontStyle?(isFocused: isFocused, theme: pixelTheme)
-        ?? pixelTheme.typography.big3
+        properties?.fontStyle(isFocused: isFocused, theme: theme)
+        ?? _fontStyle?(isFocused: isFocused, theme: theme)
+        ?? theme.typography.big3
     }
 
     private var font: Font {
@@ -73,9 +54,9 @@ public struct PixelText: View {
     }
 
     private var foregroundStyle: Color {
-        _configuration?.colorStyle(isFocused: isFocused, theme: pixelTheme).color
-        ?? _colorStyle?(isFocused: isFocused, theme: pixelTheme).color
-        ?? pixelTheme.colorScheme.onBackground.color
+        properties?.colorStyle(isFocused: isFocused, theme: theme).color
+        ?? _colorStyle?(isFocused: isFocused, theme: theme).color
+        ?? theme.colorScheme.onBackground.color
     }
 
     private var kerning: CGFloat {
@@ -83,11 +64,23 @@ public struct PixelText: View {
     }
 
     private var lineLimit: Int? {
-        _configuration?.lineLimit ?? _lineLimit
+        if let properties {
+            properties.lineLimit
+        } else {
+            _lineLimit
+        }
+    }
+
+    private var lineSpacing: CGFloat? {
+        if let properties {
+            properties.lineSpacing
+        } else {
+            _lineSpacing
+        }
     }
 
     private var multilineTextAlignment: TextAlignment {
-        _configuration?.alignment ?? _alignment ?? .center
+        properties?.alignment ?? _alignment ?? .center
     }
 
     private var textCase: Text.Case? {
@@ -99,17 +92,31 @@ public struct PixelText: View {
     }
 }
 
+private extension View {
+
+    @ViewBuilder
+    func lineSpacing(_ lineSpacing: CGFloat?) -> some View {
+        if let lineSpacing {
+            self.lineSpacing(lineSpacing)
+        } else {
+            self
+        }
+    }
+}
+
 #Preview("Implicit") {
     PixelText("Hello World!")
 }
 
 #Preview("Explicit") {
     PixelText("Hello World!")
-        .configuration(
+        .configure(
             .init(
                 alignment: .center,
                 colorStyle: .solid(.lightColorScheme.onBackground),
-                fontStyle: .solid(.sfProTypography.superDino1)
+                fontStyle: .solid(.sfProTypography.superDino1),
+                lineLimit: nil,
+                lineSpacing: nil
             )
         )
 }
