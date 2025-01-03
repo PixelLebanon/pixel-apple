@@ -10,7 +10,7 @@ import Foundation
 
 public extension PixelThemeProtocol {
 
-    var eraseToAnyPixelTheme: AnyPixelTheme {
+    func eraseToAnyPixelTheme() -> AnyPixelTheme {
         .init(self)
     }
 }

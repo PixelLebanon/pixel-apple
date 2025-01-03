@@ -8,9 +8,9 @@
 
 import SwiftUI
 
-public extension EnvironmentValues {
+extension EnvironmentValues {
 
-    @Entry var pixelTheme: AnyPixelTheme = PixelTheme.light.eraseToAnyPixelTheme
+    @Entry var pixelTheme: AnyPixelTheme = PixelTheme.light.eraseToAnyPixelTheme()
 }
 
 public extension View {

@@ -80,8 +80,4 @@ public extension PixelText {
             lineSpacing: lineSpacing
         )
     }
-
-    func configure(_ properties: PixelTextProperties) -> some View {
-        self.environment(\.pixelTextProperties, properties)
-    }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 public extension PixelFont {
 
-    var eraseToAnyPixelFont: AnyPixelFont {
+    func eraseToAnyPixelFont() -> AnyPixelFont {
         .init(self)
     }
 }
