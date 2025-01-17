@@ -1,5 +1,5 @@
 //
-//  Environment+PixelTextProperties.swift
+//  PixelText+Properties.swift
 //  Pixel
 //
 //  Created by Khaled Chehabeddine on 01/01/2025.

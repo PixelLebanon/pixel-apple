@@ -1,5 +1,5 @@
 //
-//  Environment+PixelTheme.swift
+//  View+PixelTheme.swift
 //  Pixel
 //
 //  Created by Khaled Chehabeddine on 28/10/2024.
