@@ -16,7 +16,6 @@ public struct AnyPixelFont: PixelFont {
     private let _name: String
     private let _size: CGFloat
     private let _style: Font.TextStyle
-    private let _textCase: Text.Case?
 
     private let _font: Font
     private let _uiFont: UIFont?
@@ -26,7 +25,6 @@ public struct AnyPixelFont: PixelFont {
         self._name = font.name
         self._size = font.size
         self._style = font.style
-        self._textCase = font.textCase
         self._font = font.font
         self._uiFont = font.uiFont
     }
@@ -36,7 +34,6 @@ public struct AnyPixelFont: PixelFont {
         self._name = ""
         self._size = 0
         self._style = .body
-        self._textCase = nil
         self._font = .custom("", size: 0)
         self._uiFont = .init(name: "", size: 0)
     }
@@ -55,10 +52,6 @@ public struct AnyPixelFont: PixelFont {
 
     public var style: Font.TextStyle {
         _style
-    }
-
-    public var textCase: Text.Case? {
-        _textCase
     }
 
     public var font: Font {

@@ -14,6 +14,7 @@ public struct PixelText: View {
     @Environment(\.lineLimit) private var _lineLimit: Int?
     @Environment(\.lineSpacing) private var _lineSpacing: CGFloat
     @Environment(\.multilineTextAlignment) private var _multilineTextAlignment: TextAlignment
+    @Environment(\.textCase) private var _textCase: Text.Case?
 
     @Environment(\.pixelColorStyle) private var _colorStyle: PixelColorStyle?
     @Environment(\.pixelFontStyle) private var _fontStyle: PixelFontStyle?
@@ -79,7 +80,11 @@ public struct PixelText: View {
     }
 
     private var textCase: Text.Case? {
-        pixelFont.textCase
+        if let _properties {
+            _properties.textCase
+        } else {
+            _textCase
+        }
     }
 
     private var visibility: Visibility {
@@ -97,9 +102,10 @@ public struct PixelText: View {
             .init(
                 alignment: .center,
                 colorStyle: .solid(.lightColorScheme.onBackground),
-                fontStyle: .solid(.sfProTypography.superDino1),
+                fontStyle: .solid(.satoshiTypography.superDino1),
                 lineLimit: nil,
-                lineSpacing: nil
+                lineSpacing: nil,
+                textCase: nil
             )
         )
 }

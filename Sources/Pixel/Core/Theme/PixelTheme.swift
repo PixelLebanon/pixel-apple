@@ -21,6 +21,6 @@ public enum PixelTheme: PixelThemeProtocol, CaseIterable {
     }
 
     public var typography: PixelTypography {
-        .sfPro
+        .satoshi
     }
 }

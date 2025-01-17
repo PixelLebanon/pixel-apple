@@ -14,7 +14,6 @@ public protocol PixelFont: Hashable, Sendable {
     var name: String { get }
     var size: CGFloat { get }
     var style: Font.TextStyle { get }
-    var textCase: Text.Case? { get }
 
     var font: Font { get }
     var uiFont: UIFont? { get }
