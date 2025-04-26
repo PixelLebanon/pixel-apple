@@ -6,9 +6,9 @@
 //  Copyright © 2024 Pixel. All rights reserved.
 //
 
-// swiftlint:disable identifier_name
-
 import Foundation
+
+// swiftlint:disable identifier_name
 
 public extension CGFloat.Pixel {
 

@@ -10,14 +10,14 @@ import CoreGraphics
 import CoreText
 import UIKit
 
-func registerFont(path: String) throws {
-    enum RegistrationError: Error {
+enum RegistrationError: Error {
 
-        case failedFontRegistration, invalidPath
-    }
+    case failedFontRegistration, invalidPath
+}
 
-    guard let asset: NSDataAsset = .init(name: path, bundle: .module) else { throw RegistrationError.invalidPath }
+func registerFont(path: String) throws(RegistrationError) {
+    guard let asset: NSDataAsset = .init(name: path, bundle: .module) else { throw .invalidPath }
     guard let provider: CGDataProvider = .init(data: asset.data as CFData),
           let font: CGFont = .init(provider),
-          CTFontManagerRegisterGraphicsFont(font, nil) else { throw RegistrationError.failedFontRegistration }
+          CTFontManagerRegisterGraphicsFont(font, nil) == true else { throw .failedFontRegistration }
 }

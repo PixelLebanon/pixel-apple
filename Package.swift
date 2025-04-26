@@ -4,7 +4,7 @@
 
 let package: Package = .init(
     name: .name,
-    platforms: [.iOS(.v17)],
+    platforms: [.iOS(.v18)],
     products: [.pixel],
     dependencies: [.swiftLint],
     targets: [

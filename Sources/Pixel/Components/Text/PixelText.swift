@@ -16,9 +16,10 @@ public struct PixelText: View {
     @Environment(\.multilineTextAlignment) private var _multilineTextAlignment: TextAlignment
     @Environment(\.textCase) private var _textCase: Text.Case?
 
+    @Environment(\.pixelTextConfiguration) private var _configuration: Self.Configuration?
     @Environment(\.pixelColorStyle) private var _colorStyle: PixelColorStyle?
     @Environment(\.pixelFontStyle) private var _fontStyle: PixelFontStyle?
-    @Environment(\.pixelTextProperties) private var _properties: PixelTextProperties?
+
     @Environment(\.pixelTheme) private var _theme: AnyPixelTheme
 
     let text: String
@@ -40,7 +41,7 @@ public struct PixelText: View {
     }
 
     private var pixelFont: AnyPixelFont {
-        _properties?.fontStyle(isFocused: _isFocused, theme: _theme)
+        _configuration?.fontStyle(isFocused: _isFocused, theme: _theme)
         ?? _fontStyle?(isFocused: _isFocused, theme: _theme)
         ?? _theme.typography.big3
     }
@@ -50,7 +51,7 @@ public struct PixelText: View {
     }
 
     private var foregroundStyle: Color {
-        _properties?.colorStyle(isFocused: _isFocused, theme: _theme).color
+        _configuration?.colorStyle(isFocused: _isFocused, theme: _theme).color
         ?? _colorStyle?(isFocused: _isFocused, theme: _theme).color
         ?? _theme.colorScheme.onBackground.color
     }
@@ -60,28 +61,28 @@ public struct PixelText: View {
     }
 
     private var lineLimit: Int? {
-        if let _properties {
-            _properties.lineLimit
+        if let _configuration {
+            _configuration.lineLimit
         } else {
             _lineLimit
         }
     }
 
     private var lineSpacing: CGFloat? {
-        if let _properties {
-            _properties.lineSpacing
+        if let _configuration {
+            _configuration.lineSpacing
         } else {
             _lineSpacing
         }
     }
 
     private var multilineTextAlignment: TextAlignment {
-        _properties?.alignment ?? _multilineTextAlignment
+        _configuration?.alignment ?? _multilineTextAlignment
     }
 
     private var textCase: Text.Case? {
-        if let _properties {
-            _properties.textCase
+        if let _configuration {
+            _configuration.textCase
         } else {
             _textCase
         }
