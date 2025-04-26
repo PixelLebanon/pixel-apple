@@ -6,7 +6,7 @@
 //  Copyright © 2024 Pixel. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 public enum PixelColorStyle {
 
@@ -16,7 +16,7 @@ public enum PixelColorStyle {
         case custom(Bool)
     }
 
-    case solid(PixelColor)
-    case themed(pixelColors: [AnyPixelTheme: PixelColor])
+    case solid(Color)
+    case themed(colors: [AnyPixelTheme: (Color)])
     indirect case conditional(activeColorStyle: Self, inactiveColorStyle: Self, condition: Condition)
 }

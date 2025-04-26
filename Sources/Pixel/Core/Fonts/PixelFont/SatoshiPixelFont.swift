@@ -18,8 +18,4 @@ public struct SatoshiPixelFont: PixelFont {
     public var font: Font {
         .custom(name, size: size, relativeTo: style)
     }
-
-    public var uiFont: UIFont? {
-        .init(name: name, size: size)
-    }
 }

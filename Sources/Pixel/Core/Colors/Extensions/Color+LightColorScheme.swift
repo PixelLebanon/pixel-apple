@@ -6,9 +6,9 @@
 //  Copyright © 2024 Pixel. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
-public extension PixelColor {
+public extension Color {
 
     static let lightColorScheme: PixelColorScheme = .light
 }

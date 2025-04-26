@@ -6,57 +6,57 @@
 //  Copyright © 2024 Pixel. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 public struct PixelColorScheme: Hashable, Sendable {
 
-    public let primary: PixelColor
-    public let onPrimary: PixelColor
+    public let primary: Color
+    public let onPrimary: Color
 
-    public let secondary: PixelColor
-    public let onSecondary: PixelColor
+    public let secondary: Color
+    public let onSecondary: Color
 
-    public let accent: PixelColor
-    public let onAccent: PixelColor
+    public let accent: Color
+    public let onAccent: Color
 
-    public let neutral: PixelColor
-    public let onNeutral: PixelColor
+    public let neutral: Color
+    public let onNeutral: Color
 
-    public let background100: PixelColor
-    public let background200: PixelColor
-    public let background300: PixelColor
-    public let onBackground: PixelColor
+    public let background100: Color
+    public let background200: Color
+    public let background300: Color
+    public let onBackground: Color
 
-    public let info: PixelColor
-    public let onInfo: PixelColor
-    public let error: PixelColor
-    public let onError: PixelColor
-    public let warning: PixelColor
-    public let onWarning: PixelColor
-    public let success: PixelColor
-    public let onSuccess: PixelColor
+    public let info: Color
+    public let onInfo: Color
+    public let error: Color
+    public let onError: Color
+    public let warning: Color
+    public let onWarning: Color
+    public let success: Color
+    public let onSuccess: Color
 
     public init(
-        primary: PixelColor,
-        onPrimary: PixelColor,
-        secondary: PixelColor,
-        onSecondary: PixelColor,
-        accent: PixelColor,
-        onAccent: PixelColor,
-        neutral: PixelColor,
-        onNeutral: PixelColor,
-        background100: PixelColor,
-        background200: PixelColor,
-        background300: PixelColor,
-        onBackground: PixelColor,
-        info: PixelColor,
-        onInfo: PixelColor,
-        error: PixelColor,
-        onError: PixelColor,
-        warning: PixelColor,
-        onWarning: PixelColor,
-        success: PixelColor,
-        onSuccess: PixelColor
+        primary: Color,
+        onPrimary: Color,
+        secondary: Color,
+        onSecondary: Color,
+        accent: Color,
+        onAccent: Color,
+        neutral: Color,
+        onNeutral: Color,
+        background100: Color,
+        background200: Color,
+        background300: Color,
+        onBackground: Color,
+        info: Color,
+        onInfo: Color,
+        error: Color,
+        onError: Color,
+        warning: Color,
+        onWarning: Color,
+        success: Color,
+        onSuccess: Color
     ) {
         self.primary = primary
         self.onPrimary = onPrimary

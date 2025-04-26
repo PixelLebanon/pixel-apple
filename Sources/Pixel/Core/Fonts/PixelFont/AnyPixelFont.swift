@@ -18,7 +18,6 @@ public struct AnyPixelFont: PixelFont {
     private let _style: Font.TextStyle
 
     private let _font: Font
-    private let _uiFont: UIFont?
 
     public init<F: PixelFont>(_ font: F) {
         self._kerning = font.kerning
@@ -26,7 +25,6 @@ public struct AnyPixelFont: PixelFont {
         self._size = font.size
         self._style = font.style
         self._font = font.font
-        self._uiFont = font.uiFont
     }
 
     private init() {
@@ -35,7 +33,6 @@ public struct AnyPixelFont: PixelFont {
         self._size = 0
         self._style = .body
         self._font = .custom("", size: 0)
-        self._uiFont = .init(name: "", size: 0)
     }
 
     public var kerning: CGFloat {
@@ -56,9 +53,5 @@ public struct AnyPixelFont: PixelFont {
 
     public var font: Font {
         _font
-    }
-
-    public var uiFont: UIFont? {
-        _uiFont
     }
 }

@@ -51,9 +51,9 @@ public struct PixelText: View {
     }
 
     private var foregroundStyle: Color {
-        _configuration?.colorStyle(isFocused: _isFocused, theme: _theme).color
-        ?? _colorStyle?(isFocused: _isFocused, theme: _theme).color
-        ?? _theme.colorScheme.onBackground.color
+        _configuration?.colorStyle(isFocused: _isFocused, theme: _theme)
+        ?? _colorStyle?(isFocused: _isFocused, theme: _theme)
+        ?? _theme.colorScheme.onBackground
     }
 
     private var kerning: CGFloat {

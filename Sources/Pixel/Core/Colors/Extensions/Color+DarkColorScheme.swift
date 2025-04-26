@@ -1,14 +1,14 @@
 //
-//  PixelColor+DarkColorScheme.swift
+//  Color+DarkColorScheme.swift
 //  Pixel
 //
 //  Created by Khaled Chehabeddine on 31/10/2024.
 //  Copyright © 2024 Pixel. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
-public extension PixelColor {
+public extension Color {
 
     static let darkColorScheme: PixelColorScheme = .dark
 }

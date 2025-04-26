@@ -16,5 +16,4 @@ public protocol PixelFont: Hashable, Sendable {
     var style: Font.TextStyle { get }
 
     var font: Font { get }
-    var uiFont: UIFont? { get }
 }
