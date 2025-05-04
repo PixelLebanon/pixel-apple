@@ -89,7 +89,13 @@ public struct PixelText: View {
     }
 
     private var visibility: Visibility {
-        pixelFont == .empty ? .remove : .default
+        if let _configuration {
+            _configuration.fontStyle(isFocused: _isFocused, theme: _theme) == nil
+            ? .remove
+            : .default
+        } else {
+            .default
+        }
     }
 }
 

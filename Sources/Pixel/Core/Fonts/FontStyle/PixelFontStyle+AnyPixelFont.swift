@@ -10,25 +10,25 @@ import Foundation
 
 public extension PixelFontStyle {
 
-    func callAsFunction() -> AnyPixelFont {
+    func callAsFunction() -> AnyPixelFont? {
         switch self {
         case let .solid(pixelFont): pixelFont
-        default: .empty
+        default: nil
         }
     }
 
-    func callAsFunction(theme: AnyPixelTheme) -> AnyPixelFont {
+    func callAsFunction(theme: AnyPixelTheme) -> AnyPixelFont? {
         switch self {
         case let .solid(pixelFont): pixelFont
-        case let .themed(pixelFonts): pixelFonts[theme] ?? .empty
-        default: .empty
+        case let .themed(pixelFonts): pixelFonts[theme]
+        default: nil
         }
     }
 
-    func callAsFunction(isFocused: Bool, theme: AnyPixelTheme) -> AnyPixelFont {
+    func callAsFunction(isFocused: Bool, theme: AnyPixelTheme) -> AnyPixelFont? {
         switch self {
         case let .solid(pixelFont): return pixelFont
-        case let .themed(pixelFonts): return pixelFonts[theme] ?? .empty
+        case let .themed(pixelFonts): return pixelFonts[theme]
         case let .conditional(activeFontStyle, inactiveFontStyle, condition):
             let isActive: Bool = switch condition {
             case .focus: isFocused

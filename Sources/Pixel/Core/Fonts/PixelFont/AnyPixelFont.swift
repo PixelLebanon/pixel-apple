@@ -8,50 +8,72 @@
 
 import SwiftUI
 
-public struct AnyPixelFont: PixelFont {
+private struct AnyPixelFontBox: Hashable, Sendable {
 
-    public static let empty: Self = .init()
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        guard type(of: lhs.base) == type(of: rhs.base),
+              let lhsHashable: AnyHashable = lhs.base as? AnyHashable,
+              let rhsHashable: AnyHashable = rhs.base as? AnyHashable else { return false }
 
-    private let _kerning: CGFloat
-    private let _name: String
-    private let _size: CGFloat
-    private let _style: Font.TextStyle
-
-    private let _font: Font
-
-    public init<F: PixelFont>(_ font: F) {
-        self._kerning = font.kerning
-        self._name = font.name
-        self._size = font.size
-        self._style = font.style
-        self._font = font.font
+        return lhsHashable == rhsHashable
     }
 
-    private init() {
-        self._kerning = 0
-        self._name = ""
-        self._size = 0
-        self._style = .body
-        self._font = .custom("", size: 0)
+    let base: any PixelFont
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(base)
+    }
+
+    func italic(_ italic: Bool) -> Self {
+        .init(base: base.italic(italic))
+    }
+
+    func weight(_ weight: Font.Weight) -> Self {
+        .init(base: base.weight(weight))
+    }
+}
+
+public struct AnyPixelFont: PixelFont {
+
+    private let box: AnyPixelFontBox
+
+    public init<F: PixelFont>(_ font: F) {
+        self.box = AnyPixelFontBox(base: font)
+    }
+
+    private init(_ box: AnyPixelFontBox) {
+        self.box = box
+    }
+
+    public var italic: Bool {
+        box.base.italic
     }
 
     public var kerning: CGFloat {
-        _kerning
-    }
-
-    public var name: String {
-        _name
+        box.base.kerning
     }
 
     public var size: CGFloat {
-        _size
+        box.base.size
     }
 
     public var style: Font.TextStyle {
-        _style
+        box.base.style
+    }
+
+    public var weight: Font.Weight {
+        box.base.weight
     }
 
     public var font: Font {
-        _font
+        box.base.font
+    }
+
+    public func italic(_ italic: Bool = true) -> Self {
+        .init(box.italic(italic))
+    }
+
+    public func weight(_ weight: Font.Weight) -> Self {
+        .init(box.weight(weight))
     }
 }
