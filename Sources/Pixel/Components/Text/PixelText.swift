@@ -22,7 +22,7 @@ public struct PixelText: View {
 
     @Environment(\.pixelTheme) private var _theme: AnyPixelTheme
 
-    let text: String
+    private let text: String
 
     public init(_ text: String) {
         self.text = text
@@ -90,9 +90,7 @@ public struct PixelText: View {
 
     private var visibility: Visibility {
         if let _configuration {
-            _configuration.fontStyle(isFocused: _isFocused, theme: _theme) == nil
-            ? .remove
-            : .default
+            _configuration.fontStyle(isFocused: _isFocused, theme: _theme) == nil ? .remove : .default
         } else {
             .default
         }
@@ -109,7 +107,7 @@ public struct PixelText: View {
             .init(
                 alignment: .center,
                 colorStyle: .solid(.lightColorScheme.onBackground),
-                fontStyle: .solid(.satoshiTypography.superDino1),
+                fontStyle: .solid(.satoshiTypography.dino1.weight(.black)),
                 lineLimit: nil,
                 lineSpacing: nil,
                 textCase: nil
