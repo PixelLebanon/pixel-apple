@@ -10,6 +10,32 @@ import SwiftUI
 
 public struct PixelText: View {
 
+    public struct Configuration {
+
+        public let alignment: TextAlignment
+        public let colorStyle: PixelColorStyle
+        public let fontStyle: PixelFontStyle
+        public let lineLimit: Int?
+        public let lineSpacing: CGFloat?
+        public let textCase: Text.Case?
+
+        public init(
+            alignment: TextAlignment,
+            colorStyle: PixelColorStyle,
+            fontStyle: PixelFontStyle,
+            lineLimit: Int?,
+            lineSpacing: CGFloat?,
+            textCase: Text.Case?
+        ) {
+            self.alignment = alignment
+            self.colorStyle = colorStyle
+            self.fontStyle = fontStyle
+            self.lineLimit = lineLimit
+            self.lineSpacing = lineSpacing
+            self.textCase = textCase
+        }
+    }
+
     @Environment(\.isFocused) private var _isFocused: Bool
     @Environment(\.lineLimit) private var _lineLimit: Int?
     @Environment(\.lineSpacing) private var _lineSpacing: CGFloat
@@ -22,7 +48,7 @@ public struct PixelText: View {
 
     @Environment(\.pixelTheme) private var _theme: AnyPixelTheme
 
-    private let text: String
+    let text: String
 
     public init(_ text: String) {
         self.text = text
