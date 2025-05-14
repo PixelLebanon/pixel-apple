@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.1
 
 @preconcurrency import PackageDescription
 
@@ -15,7 +15,7 @@ let package: Package = .init(
 
 private extension Package.Dependency {
 
-    static let swiftLint: Package.Dependency = package(url: "https://github.com/realm/SwiftLint.git", exact: "0.57.0")
+    static let swiftLint: Package.Dependency = package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", exact: "0.59.1")
 }
 
 private extension Product {
@@ -34,8 +34,8 @@ private extension String {
     // MARK: Packages
 
     // MARK: Plugins
-    static let swiftLint: Self = "SwiftLintBuildToolPlugin"
-    static let swiftLintPackage: Self = "SwiftLint"
+    static let swiftLintPlugin: Self = "SwiftLintBuildToolPlugin"
+    static let swiftLintPackage: Self = "SwiftLintPlugins"
 
     var test: Self {
         "\(self)Tests"
@@ -58,5 +58,5 @@ private extension Target.Dependency {
 
 private extension Target.PluginUsage {
 
-    static let swiftLint: Self = plugin(name: .swiftLint, package: .swiftLintPackage)
+    static let swiftLint: Self = plugin(name: .swiftLintPlugin, package: .swiftLintPackage)
 }
