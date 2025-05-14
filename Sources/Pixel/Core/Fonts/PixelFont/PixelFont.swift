@@ -10,10 +10,14 @@ import SwiftUI
 
 public protocol PixelFont: Hashable, Sendable {
 
+    var italic: Bool { get }
     var kerning: CGFloat { get }
-    var name: String { get }
     var size: CGFloat { get }
     var style: Font.TextStyle { get }
+    var weight: Font.Weight { get }
 
     var font: Font { get }
+
+    func italic(_ italic: Bool) -> Self
+    func weight(_ weight: Font.Weight) -> Self
 }

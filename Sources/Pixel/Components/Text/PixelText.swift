@@ -10,14 +10,40 @@ import SwiftUI
 
 public struct PixelText: View {
 
+    public struct Configuration {
+
+        public let alignment: TextAlignment
+        public let colorStyle: PixelColorStyle
+        public let fontStyle: PixelFontStyle
+        public let lineLimit: Int?
+        public let lineSpacing: CGFloat?
+        public let textCase: Text.Case?
+
+        public init(
+            alignment: TextAlignment,
+            colorStyle: PixelColorStyle,
+            fontStyle: PixelFontStyle,
+            lineLimit: Int?,
+            lineSpacing: CGFloat?,
+            textCase: Text.Case?
+        ) {
+            self.alignment = alignment
+            self.colorStyle = colorStyle
+            self.fontStyle = fontStyle
+            self.lineLimit = lineLimit
+            self.lineSpacing = lineSpacing
+            self.textCase = textCase
+        }
+    }
+
     @Environment(\.isFocused) private var _isFocused: Bool
     @Environment(\.lineLimit) private var _lineLimit: Int?
     @Environment(\.lineSpacing) private var _lineSpacing: CGFloat
     @Environment(\.multilineTextAlignment) private var _multilineTextAlignment: TextAlignment
     @Environment(\.textCase) private var _textCase: Text.Case?
 
-    @Environment(\.pixelTextConfiguration) private var _configuration: Self.Configuration?
-    @Environment(\.pixelColorStyle) private var _colorStyle: PixelColorStyle?
+    @Environment(\.pixelTextConfiguration) private var _configuration: Configuration?
+    @Environment(\.pixelForegroundColorStyle) private var _colorStyle: PixelColorStyle?
     @Environment(\.pixelFontStyle) private var _fontStyle: PixelFontStyle?
 
     @Environment(\.pixelTheme) private var _theme: AnyPixelTheme
@@ -43,7 +69,7 @@ public struct PixelText: View {
     private var pixelFont: AnyPixelFont {
         _configuration?.fontStyle(isFocused: _isFocused, theme: _theme)
         ?? _fontStyle?(isFocused: _isFocused, theme: _theme)
-        ?? _theme.typography.big3
+        ?? _theme.typography.medium2
     }
 
     private var font: Font {
@@ -89,7 +115,11 @@ public struct PixelText: View {
     }
 
     private var visibility: Visibility {
-        pixelFont == .empty ? .remove : .default
+        if let _configuration {
+            _configuration.fontStyle(isFocused: _isFocused, theme: _theme) == nil ? .remove : .default
+        } else {
+            .default
+        }
     }
 }
 
@@ -103,7 +133,7 @@ public struct PixelText: View {
             .init(
                 alignment: .center,
                 colorStyle: .solid(.lightColorScheme.onBackground),
-                fontStyle: .solid(.satoshiTypography.superDino1),
+                fontStyle: .solid(.satoshiTypography.dino1.weight(.black)),
                 lineLimit: nil,
                 lineSpacing: nil,
                 textCase: nil

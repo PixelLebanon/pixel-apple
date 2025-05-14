@@ -1,4 +1,4 @@
-// swift-tools-version: 6.1
+// swift-tools-version: 6.0
 
 @preconcurrency import PackageDescription
 
@@ -44,7 +44,11 @@ private extension String {
 
 private extension Target {
 
-    static let pixel: Target = target(name: .pixel, plugins: [.swiftLint])
+    static let pixel: Target = target(
+        name: .pixel,
+//        resources: [.process("Core/Assets/Fonts")],
+        plugins: [.swiftLint]
+    )
     static let pixelTest: Target = testTarget(name: .pixel.test, dependencies: [.pixel], plugins: [.swiftLint])
 }
 

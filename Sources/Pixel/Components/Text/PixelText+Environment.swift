@@ -15,7 +15,7 @@ extension EnvironmentValues {
 
 public extension PixelText {
 
-    func configure(_ configuration: PixelText.Configuration) -> some View {
+    func configure(_ configuration: Configuration) -> some View {
         self.environment(\.pixelTextConfiguration, configuration)
     }
 }
