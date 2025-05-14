@@ -42,8 +42,8 @@ public struct PixelText: View {
     @Environment(\.multilineTextAlignment) private var _multilineTextAlignment: TextAlignment
     @Environment(\.textCase) private var _textCase: Text.Case?
 
-    @Environment(\.pixelTextConfiguration) private var _configuration: Self.Configuration?
-    @Environment(\.pixelColorStyle) private var _colorStyle: PixelColorStyle?
+    @Environment(\.pixelTextConfiguration) private var _configuration: Configuration?
+    @Environment(\.pixelForegroundColorStyle) private var _colorStyle: PixelColorStyle?
     @Environment(\.pixelFontStyle) private var _fontStyle: PixelFontStyle?
 
     @Environment(\.pixelTheme) private var _theme: AnyPixelTheme
@@ -69,7 +69,7 @@ public struct PixelText: View {
     private var pixelFont: AnyPixelFont {
         _configuration?.fontStyle(isFocused: _isFocused, theme: _theme)
         ?? _fontStyle?(isFocused: _isFocused, theme: _theme)
-        ?? _theme.typography.big3
+        ?? _theme.typography.medium2
     }
 
     private var font: Font {

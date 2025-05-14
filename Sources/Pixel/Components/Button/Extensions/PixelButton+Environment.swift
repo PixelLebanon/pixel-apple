@@ -15,7 +15,7 @@ extension EnvironmentValues {
 
 public extension PixelButton {
 
-    func configure(_ configuration: Self.Configuration) -> some View {
+    func configure(_ configuration: Configuration) -> some View {
         self.environment(\.pixelButtonConfiguration, configuration)
     }
 }
