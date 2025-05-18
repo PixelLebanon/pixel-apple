@@ -10,12 +10,17 @@ import SwiftUI
 
 extension EnvironmentValues {
 
-    @Entry var pixelColorStyle: PixelColorStyle?
+    @Entry var backgroundPixelColorStyle: PixelColorStyle?
+    @Entry var foregroundPixelColorStyle: PixelColorStyle?
 }
 
 public extension View {
 
-    func pixelColorStyle(_ colorStyle: PixelColorStyle) -> some View {
-        self.environment(\.pixelColorStyle, colorStyle)
+    func backgroundPixelColorStyle(_ colorStyle: PixelColorStyle) -> some View {
+        self.environment(\.backgroundPixelColorStyle, colorStyle)
+    }
+
+    func foregroundPixelColorStyle(_ colorStyle: PixelColorStyle) -> some View {
+        self.environment(\.foregroundPixelColorStyle, colorStyle)
     }
 }

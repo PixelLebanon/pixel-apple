@@ -11,10 +11,15 @@ import Foundation
 struct Satoshi {
 
     static let light: Self = .init(name: "Satoshi-Light")
+    static let lightItalic: Self = .init(name: "Satoshi-LightItalic")
     static let regular: Self = .init(name: "Satoshi-Regular")
+    static let regularItalic: Self = .init(name: "Satoshi-Italic")
     static let medium: Self = .init(name: "Satoshi-Medium")
+    static let mediumItalic: Self = .init(name: "Satoshi-MediumItalic")
     static let bold: Self = .init(name: "Satoshi-Bold")
+    static let boldItalic: Self = .init(name: "Satoshi-BoldItalic")
     static let black: Self = .init(name: "Satoshi-Black")
+    static let blackItalic: Self = .init(name: "Satoshi-BlackItalic")
 
     let name: String
 
@@ -26,6 +31,10 @@ struct Satoshi {
         } catch {
             fatalError("Failed to register font: \(name) with error: \(error)")
         }
+    }
+
+    func callAsFunction() -> String {
+        name
     }
 }
 

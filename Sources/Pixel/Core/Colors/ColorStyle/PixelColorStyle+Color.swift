@@ -10,25 +10,25 @@ import SwiftUI
 
 public extension PixelColorStyle {
 
-    func callAsFunction() -> Color {
+    func callAsFunction() -> Color? {
         switch self {
         case let .solid(color): color
-        default: .clear
+        default: nil
         }
     }
 
-    func callAsFunction(theme: AnyPixelTheme) -> Color {
+    func callAsFunction(theme: AnyPixelTheme) -> Color? {
         switch self {
         case let .solid(color): color
-        case let .themed(colors): colors[theme] ?? .clear
-        default: .clear
+        case let .themed(colors): colors[theme]
+        default: nil
         }
     }
 
-    func callAsFunction(isFocused: Bool, theme: AnyPixelTheme) -> Color {
+    func callAsFunction(isFocused: Bool, theme: AnyPixelTheme) -> Color? {
         switch self {
         case let .solid(color): return color
-        case let .themed(colors): return colors[theme] ?? .clear
+        case let .themed(colors): return colors[theme]
         case let .conditional(activeColorStyle, inactiveColorStyle, condition):
             let isActive: Bool = switch condition {
             case .focus: isFocused

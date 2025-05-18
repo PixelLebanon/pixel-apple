@@ -2,11 +2,16 @@
 //  PixelText+Configuration.swift
 //  Pixel
 //
-//  Created by Khaled Chehabeddine on 01/01/2025.
+//  Created by Khaled Chehabeddine on 26/01/2025.
 //  Copyright © 2025 Pixel. All rights reserved.
 //
 
 import SwiftUI
+
+extension EnvironmentValues {
+
+    @Entry var pixelTextConfiguration: PixelText.Configuration?
+}
 
 public extension PixelText {
 
@@ -34,5 +39,9 @@ public extension PixelText {
             self.lineSpacing = lineSpacing
             self.textCase = textCase
         }
+    }
+
+    func configure(_ configuration: Configuration) -> some View {
+        self.environment(\.pixelTextConfiguration, configuration)
     }
 }
