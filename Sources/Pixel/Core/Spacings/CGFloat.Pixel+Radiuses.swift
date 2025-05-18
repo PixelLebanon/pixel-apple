@@ -16,8 +16,8 @@ public extension CGFloat.Pixel {
     static let small: CGFloat = 6
     /// Radius value of 8.
     static let medium: CGFloat = 8
-    /// Radius value of 12.
-    static let big: CGFloat = 12
-    /// Radius value of 16.
-    static let dino: CGFloat = 16
+    /// Radius value of 10.
+    static let big: CGFloat = 10
+    /// Radius value of 14.
+    static let dino: CGFloat = 14
 }

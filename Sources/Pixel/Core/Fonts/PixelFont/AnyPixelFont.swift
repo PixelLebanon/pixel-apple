@@ -24,8 +24,8 @@ private struct AnyPixelFontBox: Hashable, Sendable {
         hasher.combine(base)
     }
 
-    func italic(_ italic: Bool) -> Self {
-        .init(base: base.italic(italic))
+    func italic(_ isActive: Bool) -> Self {
+        .init(base: base.italic(isActive))
     }
 
     func weight(_ weight: Font.Weight) -> Self {
@@ -45,10 +45,6 @@ public struct AnyPixelFont: PixelFont {
         self.box = box
     }
 
-    public var italic: Bool {
-        box.base.italic
-    }
-
     public var kerning: CGFloat {
         box.base.kerning
     }
@@ -63,6 +59,10 @@ public struct AnyPixelFont: PixelFont {
 
     public var weight: Font.Weight {
         box.base.weight
+    }
+
+    public var isItalic: Bool {
+        box.base.isItalic
     }
 
     public var font: Font {
